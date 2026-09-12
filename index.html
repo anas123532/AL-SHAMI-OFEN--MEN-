@@ -27,7 +27,7 @@
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.6;
-      padding-bottom: 80px;
+      padding-bottom: 90px;
     }
 
     header {
@@ -71,9 +71,10 @@
       transition: all 0.3s;
     }
 
-    .lang-btn.active, .lang-btn:hover {
+    .lang-btn.active {
       background: var(--accent-gold);
       color: var(--bg-dark);
+      font-weight: bold;
     }
 
     .nav-tabs {
@@ -145,12 +146,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s;
-    }
-
-    .item-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-gold);
     }
 
     .item-header {
@@ -179,41 +174,19 @@
       margin-bottom: 10px;
     }
 
-    .size-selector {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .size-btn {
-      flex: 1;
-      padding: 4px;
-      font-size: 0.8rem;
-      background: var(--bg-dark);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .size-btn.active {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
     .add-btn {
       background: var(--accent-gold);
       color: var(--bg-dark);
       border: none;
-      padding: 8px;
-      border-radius: 5px;
+      padding: 10px;
+      border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
-      transition: background 0.2s;
+      font-size: 0.95rem;
     }
 
-    .add-btn:hover {
+    .add-btn:active {
       background: var(--gold-light);
     }
 
@@ -245,14 +218,12 @@
       background: #25D366;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 20px;
       font-weight: bold;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       text-decoration: none;
+      display: inline-block;
     }
   </style>
 </head>
@@ -262,137 +233,140 @@
     <div class="logo-title">الفرن الشامي</div>
     <div class="subtitle">Al-Shami Ofen - Sonnenallee</div>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
-      <button class="lang-btn" onclick="setLang('de')">Deutsch</button>
-      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn active" onclick="setLanguage('ar')">عربي</button>
+      <button class="lang-btn" onclick="setLanguage('de')">Deutsch</button>
+      <button class="lang-btn" onclick="setLanguage('en')">English</button>
     </div>
   </header>
 
   <nav class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('manakish')">مناقيش / Manakish</button>
-    <button class="tab-btn" onclick="showTab('borek')">بوريك / Börek</button>
-    <button class="tab-btn" onclick="showTab('soiree')">سواري / Soirées</button>
-    <button class="tab-btn" onclick="showTab('pizza')">بيتزا / Pizza</button>
-    <button class="tab-btn" onclick="showTab('meals')">وجبات / Meals</button>
-    <button class="tab-btn" onclick="showTab('kilo')">بالكيلو / Per Kilo</button>
+    <button class="tab-btn active" id="tab-manakish" onclick="showTab(event, 'manakish')">المناقيش واللفائف</button>
+    <button class="tab-btn" id="tab-pizza" onclick="showTab(event, 'pizza')">البيتزا</button>
+    <button class="tab-btn" id="tab-gebäck" onclick="showTab(event, 'gebäck')">المعجنات</button>
+    <button class="tab-btn" id="tab-meals" onclick="showTab(event, 'meals')">الوجبات الخاصّة</button>
+    <button class="tab-btn" id="tab-kilo" onclick="showTab(event, 'kilo')">طلبات بالكيلو</button>
   </nav>
 
   <div class="container">
-    <!-- المناقيش -->
+    <!-- المناقيش واللفائف -->
     <div id="manakish" class="menu-section active">
-      <h2 class="section-title">المناقيش / Manakish</h2>
+      <h2 class="section-title" id="title-manakish">المناقيش واللفائف</h2>
       <div class="menu-grid">
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">منقوشة زعتر</span>
+            <span class="item-title" id="item-zaatar-title">منقوشة زعتر</span>
+            <span class="item-price">€2.50</span>
+          </div>
+          <div class="item-desc" id="item-zaatar-desc">زعتر شامي أصيل مع زيت الزيتون</div>
+          <button class="add-btn" id="btn-zaatar" onclick="addToCart('منقوشة زعتر', 2.50)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title" id="item-muhammara-title">منقوشة محمرة</span>
             <span class="item-price">€2.00</span>
           </div>
-          <div class="item-desc">زعتر شامي أصيل مع زيت الزيتون</div>
-          <button class="add-btn" onclick="addToCart('منقوشة زعتر', 2.00)">إضافة للطلب</button>
+          <div class="item-desc" id="item-muhammara-desc">محمرة شامية ممتازة</div>
+          <button class="add-btn" id="btn-muhammara" onclick="addToCart('منقوشة محمرة', 2.00)">إضافة للطلب</button>
         </div>
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">منقوشة جبنة بيضاء</span>
-            <span class="item-price">€3.00</span>
+            <span class="item-title" id="item-cheese-title">جبنة دمشقية</span>
+            <span class="item-price">€1.50</span>
           </div>
-          <div class="item-desc">جبنة عكّاوي / بلدية ممتازة</div>
-          <button class="add-btn" onclick="addToCart('منقوشة جبنة بيضاء', 3.00)">إضافة للطلب</button>
-        </div>
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title">منقوشة محمرة بالجبنة</span>
-            <span class="item-price">€3.50</span>
-          </div>
-          <div class="item-desc">خلطة المحمرة الشامية مع الجبنة الموزاريلا</div>
-          <button class="add-btn" onclick="addToCart('منقوشة محمرة بالجبنة', 3.50)">إضافة للطلب</button>
+          <div class="item-desc" id="item-cheese-desc">جبنة دمشقية بلدية طازجة</div>
+          <button class="add-btn" id="btn-cheese" onclick="addToCart('جبنة دمشقية', 1.50)">إضافة للطلب</button>
         </div>
       </div>
     </div>
 
-    <!-- البوريك -->
-    <div id="borek" class="menu-section">
-      <h2 class="section-title">البوريك / Börek</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title">بوريك بالجبنة</span>
-            <span class="item-price">€2.50</span>
-          </div>
-          <div class="item-desc">طبقات العجين الهش محشوة بالجبن</div>
-          <button class="add-btn" onclick="addToCart('بوريك بالجبنة', 2.50)">إضافة للطلب</button>
-        </div>
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title">بوريك بالسبانخ</span>
-            <span class="item-price">€2.50</span>
-          </div>
-          <div class="item-desc">سبانخ مع بصل ودبس الرمان</div>
-          <button class="add-btn" onclick="addToCart('بوريك بالسبانخ', 2.50)">إضافة للطلب</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- باقي الأقسام -->
-    <div id="soiree" class="menu-section">
-      <h2 class="section-title">معجنات سواري / Soirées</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title">مشكل سواري (12 قطعة)</span>
-            <span class="item-price">€10.00</span>
-          </div>
-          <div class="item-desc">تشكيلة معجنات صغيرة للحفلات والمناسبات</div>
-          <button class="add-btn" onclick="addToCart('مشكل سواري (12 قطعة)', 10.00)">إضافة للطلب</button>
-        </div>
-      </div>
-    </div>
-
+    <!-- البيتزا -->
     <div id="pizza" class="menu-section">
-      <h2 class="section-title">بيتزا / Pizza</h2>
+      <h2 class="section-title" id="title-pizza">البيتزا</h2>
       <div class="menu-grid">
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">بيتزا مارجريتا</span>
-            <span class="item-price">€6.00</span>
+            <span class="item-title" id="item-pizza-small-title">بيتزا صغير</span>
+            <span class="item-price">€5.00</span>
           </div>
-          <div class="item-desc">صلصة طماطم، جبنة موزاريلا، أوريجانو</div>
-          <button class="add-btn" onclick="addToCart('بيتزا مارجريتا', 6.00)">إضافة للطلب</button>
+          <div class="item-desc" id="item-pizza-small-desc">بيتزا شهية بالحجم الصغير</div>
+          <button class="add-btn" id="btn-pizza-small" onclick="addToCart('بيتزا صغير', 5.00)">إضافة للطلب</button>
         </div>
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">بيتزا الخضار</span>
-            <span class="item-price">€7.50</span>
+            <span class="item-title" id="item-pizza-family-title">بيتزا عائلي</span>
+            <span class="item-price">€18.00</span>
           </div>
-          <div class="item-desc">فلفل، فطر، زيتون، بصل، موزاريلا</div>
-          <button class="add-btn" onclick="addToCart('بيتزا الخضار', 7.50)">إضافة للطلب</button>
+          <div class="item-desc" id="item-pizza-family-desc">بيتزا حجم عائلي كبير</div>
+          <button class="add-btn" id="btn-pizza-family" onclick="addToCart('بيتزا عائلي', 18.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
 
+    <!-- المعجنات -->
+    <div id="gebäck" class="menu-section">
+      <h2 class="section-title" id="title-gebäck">المعجنات</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title" id="item-pastry-title">معجنات صغيرة (قطعة)</span>
+            <span class="item-price">€1.00</span>
+          </div>
+          <div class="item-desc" id="item-pastry-desc">معجنات مشكلة طازجة للقطعة</div>
+          <button class="add-btn" id="btn-pastry" onclick="addToCart('معجنات صغيرة (قطعة)', 1.00)">إضافة للطلب</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- الوجبات -->
     <div id="meals" class="menu-section">
-      <h2 class="section-title">وجبات / Meals</h2>
+      <h2 class="section-title" id="title-meals">الوجبات الخاصّة</h2>
       <div class="menu-grid">
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">وجبة صفايح شامية</span>
-            <span class="item-price">€8.50</span>
+            <span class="item-title" id="item-sfayih-meal-title">وجبة الصفيحة</span>
+            <span class="item-price">€15.00</span>
           </div>
-          <div class="item-desc">6 قطع صفايح مع اللبن والعيران</div>
-          <button class="add-btn" onclick="addToCart('وجبة صفايح شامية', 8.50)">إضافة للطلب</button>
+          <div class="item-desc" id="item-sfayih-meal-desc">وجبة صفيحة شامية كاملة</div>
+          <button class="add-btn" id="btn-sfayih-meal" onclick="addToCart('وجبة الصفيحة', 15.00)">إضافة للطلب</button>
         </div>
-      </div>
-    </div>
-
-    <div id="kilo" class="menu-section">
-      <h2 class="section-title">بالكيلو / Per Kilo</h2>
-      <div class="menu-grid">
         <div class="item-card">
           <div class="item-header">
-            <span class="item-title">كيلو صفيحة شامية</span>
+            <span class="item-title" id="item-oven-tray-title">صينية الفرن</span>
             <span class="item-price">€22.00</span>
           </div>
-          <div class="item-desc">صفيحة باللحمة على الطريقة الشامية الأصلية</div>
-          <button class="add-btn" onclick="addToCart('كيلو صفيحة شامية', 22.00)">إضافة للطلب</button>
+          <div class="item-desc" id="item-oven-tray-desc">صينية فرن شامية مشكلة</div>
+          <button class="add-btn" id="btn-oven-tray" onclick="addToCart('صينية الفرن', 22.00)">إضافة للطلب</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- بالكيلو -->
+    <div id="kilo" class="menu-section">
+      <h2 class="section-title" id="title-kilo">طلبات بالكيلو</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title" id="item-kilo-sfayih-title">كيلو صفيحة شامية</span>
+            <span class="item-price">€50.00</span>
+          </div>
+          <div class="item-desc" id="item-kilo-sfayih-desc">صفيحة شامية بأنواعها باللحم الأصيل</div>
+          <button class="add-btn" id="btn-kilo-sfayih" onclick="addToCart('كيلو صفيحة شامية', 50.00)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title" id="item-kilo-mc-title">كيلو مجرمشة</span>
+            <span class="item-price">€50.00</span>
+          </div>
+          <div class="item-desc" id="item-kilo-mc-desc">مجرمشة شامية ممتازة</div>
+          <button class="add-btn" id="btn-kilo-mc" onclick="addToCart('كيلو مجرمشة', 50.00)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title" id="item-kilo-sh-title">كيلو شرحات</span>
+            <span class="item-price">€55.00</span>
+          </div>
+          <div class="item-desc" id="item-kilo-sh-desc">شرحات لحم عالي الجودة بالفرن</div>
+          <button class="add-btn" id="btn-kilo-sh" onclick="addToCart('كيلو شرحات', 55.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
@@ -400,28 +374,209 @@
 
   <div class="cart-bar">
     <div class="cart-info">
-      <div>السلة: <span id="cart-count">0</span> عناصر</div>
+      <div><span id="label-cart">السلة:</span> <span id="cart-count">0</span> <span id="label-items">عناصر</span></div>
       <div class="cart-total" id="cart-total">0.00 €</div>
     </div>
-    <a href="#" class="order-btn" onclick="sendWhatsApp()">
-      إرسال الطلب (WhatsApp)
-    </a>
+    <button class="order-btn" id="btn-order" onclick="sendWhatsApp()">إرسال الطلب (WhatsApp)</button>
   </div>
 
   <script>
-    let cart = [];
-    let total = 0;
+    var cart = [];
+    var total = 0;
+    var currentLang = 'ar';
 
-    function showTab(tabId) {
-      document.querySelectorAll('.menu-section').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    var translations = {
+      ar: {
+        dir: 'rtl',
+        tabManakish: 'المناقيش واللفائف',
+        tabPizza: 'البيتزا',
+        tabGebäck: 'المعجنات',
+        tabMeals: 'الوجبات الخاصّة',
+        tabKilo: 'طلبات بالكيلو',
+        
+        titleManakish: 'المناقيش واللفائف',
+        titlePizza: 'البيتزا',
+        titleGebäck: 'المعجنات',
+        titleMeals: 'الوجبات الخاصّة',
+        titleKilo: 'طلبات بالكيلو',
+
+        zaatarTitle: 'منقوشة زعتر', zaatarDesc: 'زعتر شامي أصيل مع زيت الزيتون',
+        muhammaraTitle: 'منقوشة محمرة', muhammaraDesc: 'محمرة شامية ممتازة',
+        cheeseTitle: 'جبنة دمشقية', cheeseDesc: 'جبنة دمشقية بلدية طازجة',
+
+        pizzaSmallTitle: 'بيتزا صغير', pizzaSmallDesc: 'بيتزا شهية بالحجم الصغير',
+        pizzaFamilyTitle: 'بيتزا عائلي', pizzaFamilyDesc: 'بيتزا حجم عائلي كبير',
+
+        pastryTitle: 'معجنات صغيرة (قطعة)', pastryDesc: 'معجنات مشكلة طازجة للقطعة',
+
+        sfayihMealTitle: 'وجبة الصفيحة', sfayihMealDesc: 'وجبة صفيحة شامية كاملة',
+        ovenTrayTitle: 'صينية الفرن', ovenTrayDesc: 'صينية فرن شامية مشكلة',
+
+        kiloSfayihTitle: 'كيلو صفيحة شامية', kiloSfayihDesc: 'صفيحة شامية بأنواعها باللحم الأصيل',
+        kiloMcTitle: 'كيلو مجرمشة', kiloMcDesc: 'مجرمشة شامية ممتازة',
+        kiloShTitle: 'كيلو شرحات', kiloShDesc: 'شرحات لحم عالي الجودة بالفرن',
+
+        addBtn: 'إضافة للطلب',
+        labelCart: 'السلة:',
+        labelItems: 'عناصر',
+        btnOrder: 'إرسال الطلب (WhatsApp)'
+      },
+      de: {
+        dir: 'ltr',
+        tabManakish: 'Manakish & Wraps',
+        tabPizza: 'Pizza',
+        tabGebäck: 'Gebäck',
+        tabMeals: 'Spezialgerichte',
+        tabKilo: 'Pro Kilo',
+
+        titleManakish: 'Manakish & Wraps',
+        titlePizza: 'Pizza',
+        titleGebäck: 'Gebäck',
+        titleMeals: 'Spezialgerichte',
+        titleKilo: 'Bestellungen pro Kilo',
+
+        zaatarTitle: 'Thymian Manakish', zaatarDesc: 'Authentischer syrischer Thymian mit Olivenöl',
+        muhammaraTitle: 'Muhammara Manakish', muhammaraDesc: 'Scharfe Paprikapaste nach Damaszener Art',
+        cheeseTitle: 'Damaskus Käse', cheeseDesc: 'Frischer traditioneller Weißkäse',
+
+        pizzaSmallTitle: 'Pizza Klein', pizzaSmallDesc: 'Köstliche kleine Pizza',
+        pizzaFamilyTitle: 'Familien-Pizza', pizzaFamilyDesc: 'Große Familien-Pizza',
+
+        pastryTitle: 'Gebäck (Stück)', pastryDesc: 'Frisch sortiertes Gebäck pro Stück',
+
+        sfayihMealTitle: 'Sfiha Teller', sfayihMealDesc: 'Kompletter Damaszener Sfiha Teller',
+        ovenTrayTitle: 'Ofenplatte', ovenTrayDesc: 'Gemischte syrische Ofenplatte',
+
+        kiloSfayihTitle: '1 Kilo Sfiha', kiloSfayihDesc: 'Syrische Sfiha mit echtem Fleisch',
+        kiloMcTitle: '1 Kilo Mujarmasha', kiloMcDesc: 'Exzellente knusprige Spezialität',
+        kiloShTitle: '1 Kilo Sharhat', kiloShDesc: 'Hochwertige Fleischscheiben aus dem Ofen',
+
+        addBtn: 'Hinzufügen',
+        labelCart: 'Warenkorb:',
+        labelItems: 'Artikel',
+        btnOrder: 'Bestellen via WhatsApp'
+      },
+      en: {
+        dir: 'ltr',
+        tabManakish: 'Manakish & Wraps',
+        tabPizza: 'Pizza',
+        tabGebäck: 'Pastries',
+        tabMeals: 'Special Meals',
+        tabKilo: 'Per Kilo',
+
+        titleManakish: 'Manakish & Wraps',
+        titlePizza: 'Pizza',
+        titleGebäck: 'Pastries',
+        titleMeals: 'Special Meals',
+        titleKilo: 'Per Kilo Orders',
+
+        zaatarTitle: 'Zaatar Manakish', zaatarDesc: 'Authentic Syrian thyme with olive oil',
+        muhammaraTitle: 'Muhammara Manakish', muhammaraDesc: 'Damascene red pepper paste',
+        cheeseTitle: 'Damascus Cheese', cheeseDesc: 'Fresh traditional white cheese',
+
+        pizzaSmallTitle: 'Small Pizza', pizzaSmallDesc: 'Delicious small size pizza',
+        pizzaFamilyTitle: 'Family Pizza', pizzaFamilyDesc: 'Large family size pizza',
+
+        pastryTitle: 'Mini Pastry (Piece)', pastryDesc: 'Freshly mixed pastry per piece',
+
+        sfayihMealTitle: 'Sfiha Meal', sfayihMealDesc: 'Full Damascene Sfiha plate',
+        ovenTrayTitle: 'Oven Tray', ovenTrayDesc: 'Assorted Syrian oven tray',
+
+        kiloSfayihTitle: '1 Kilo Sfiha', kiloSfayihDesc: 'Syrian Sfiha with premium meat',
+        kiloMcTitle: '1 Kilo Mujarmasha', kiloMcDesc: 'Exquisite crispy specialty',
+        kiloShTitle: '1 Kilo Sharhat', kiloShDesc: 'Premium oven-baked meat slices',
+
+        addBtn: 'Add to order',
+        labelCart: 'Cart:',
+        labelItems: 'items',
+        btnOrder: 'Send Order (WhatsApp)'
+      }
+    };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      var t = translations[lang];
+
+      document.documentElement.dir = t.dir;
+      document.documentElement.lang = lang;
+
+      var buttons = document.querySelectorAll('.lang-btn');
+      buttons[0].classList.toggle('active', lang === 'ar');
+      buttons[1].classList.toggle('active', lang === 'de');
+      buttons[2].classList.toggle('active', lang === 'en');
+
+      document.getElementById('tab-manakish').innerText = t.tabManakish;
+      document.getElementById('tab-pizza').innerText = t.tabPizza;
+      document.getElementById('tab-gebäck').innerText = t.tabGebäck;
+      document.getElementById('tab-meals').innerText = t.tabMeals;
+      document.getElementById('tab-kilo').innerText = t.tabKilo;
+
+      document.getElementById('title-manakish').innerText = t.titleManakish;
+      document.getElementById('title-pizza').innerText = t.titlePizza;
+      document.getElementById('title-gebäck').innerText = t.titleGebäck;
+      document.getElementById('title-meals').innerText = t.titleMeals;
+      document.getElementById('title-kilo').innerText = t.titleKilo;
+
+      document.getElementById('item-zaatar-title').innerText = t.zaatarTitle;
+      document.getElementById('item-zaatar-desc').innerText = t.zaatarDesc;
+
+      document.getElementById('item-muhammara-title').innerText = t.muhammaraTitle;
+      document.getElementById('item-muhammara-desc').innerText = t.muhammaraDesc;
+
+      document.getElementById('item-cheese-title').innerText = t.cheeseTitle;
+      document.getElementById('item-cheese-desc').innerText = t.cheeseDesc;
+
+      document.getElementById('item-pizza-small-title').innerText = t.pizzaSmallTitle;
+      document.getElementById('item-pizza-small-desc').innerText = t.pizzaSmallDesc;
+
+      document.getElementById('item-pizza-family-title').innerText = t.pizzaFamilyTitle;
+      document.getElementById('item-pizza-family-desc').innerText = t.pizzaFamilyDesc;
+
+      document.getElementById('item-pastry-title').innerText = t.pastryTitle;
+      document.getElementById('item-pastry-desc').innerText = t.pastryDesc;
+
+      document.getElementById('item-sfayih-meal-title').innerText = t.sfayihMealTitle;
+      document.getElementById('item-sfayih-meal-desc').innerText = t.sfayihMealDesc;
+
+      document.getElementById('item-oven-tray-title').innerText = t.ovenTrayTitle;
+      document.getElementById('item-oven-tray-desc').innerText = t.ovenTrayDesc;
+
+      document.getElementById('item-kilo-sfayih-title').innerText = t.kiloSfayihTitle;
+      document.getElementById('item-kilo-sfayih-desc').innerText = t.kiloSfayihDesc;
+
+      document.getElementById('item-kilo-mc-title').innerText = t.kiloMcTitle;
+      document.getElementById('item-kilo-mc-desc').innerText = t.kiloMcDesc;
+
+      document.getElementById('item-kilo-sh-title').innerText = t.kiloShTitle;
+      document.getElementById('item-kilo-sh-desc').innerText = t.kiloShDesc;
+
+      var addBtns = document.querySelectorAll('.add-btn');
+      for (var i = 0; i < addBtns.length; i++) {
+        addBtns[i].innerText = t.addBtn;
+      }
+
+      document.getElementById('label-cart').innerText = t.labelCart;
+      document.getElementById('label-items').innerText = t.labelItems;
+      document.getElementById('btn-order').innerText = t.btnOrder;
+    }
+
+    function showTab(evt, tabId) {
+      var sections = document.querySelectorAll('.menu-section');
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('active');
+      }
       
+      var buttons = document.querySelectorAll('.tab-btn');
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove('active');
+      }
+
       document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      evt.currentTarget.classList.add('active');
     }
 
     function addToCart(name, price) {
-      cart.push({name, price});
+      cart.push({name: name, price: price});
       total += price;
       updateCartDisplay();
     }
@@ -432,23 +587,18 @@
     }
 
     function sendWhatsApp() {
-      if(cart.length === 0) {
-        alert('السلة فارغة!');
+      if (cart.length === 0) {
+        alert(currentLang === 'ar' ? 'السلة فارغة!' : (currentLang === 'de' ? 'Der Warenkorb ist leer!' : 'Cart is empty!'));
         return;
       }
-      let text = "مرحباً الفرن الشامي، أرغب بطلب:\n";
-      cart.forEach((item, i) => {
-        text += `- ${item.name} (${item.price.toFixed(2)}€)\n`;
-      });
-      text += `\nالمجموع: ${total.toFixed(2)}€`;
+      var text = (currentLang === 'ar' ? 'مرحباً الفرن الشامي، أرغب بطلب:\n' : (currentLang === 'de' ? 'Hallo Al-Shami Ofen, ich möchte bestellen:\n' : 'Hello Al-Shami Ofen, I would like to order:\n'));
+      for (var i = 0; i < cart.length; i++) {
+        text += "- " + cart[i].name + " (" + cart[i].price.toFixed(2) + "€)\n";
+      }
+      text += "\n" + (currentLang === 'ar' ? 'المجموع: ' : (currentLang === 'de' ? 'Gesamt: ' : 'Total: ')) + total.toFixed(2) + "€";
       
-      let encodedText = encodeURIComponent(text);
-      window.open(`https://wa.me/?text=${encodedText}`, '_blank');
-    }
-
-    function setLang(lang) {
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      var encodedText = encodeURIComponent(text);
+      window.open("https://wa.me/?text=" + encodedText, "_blank");
     }
   </script>
 </body>
