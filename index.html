@@ -1,978 +1,455 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الفرن الشامي - Al-Shami Ofen</title>
-    <style>
-        :root {
-            --primary-dark: #3E1B13; 
-            --accent-gold: #D4AF37;  
-            --gold-light: #F3E5AB;
-            --bg-dark: #1E120F;
-            --bg-card: #2E1914;
-            --text-main: #FFFFFF;
-            --text-muted: #E0CFA7;
-            --border-color: #5C3227;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الفرن الشامي - Al-Shami Ofen</title>
+  <style>
+    :root {
+      --primary-dark: #3E1B13;
+      --accent-gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --bg-dark: #1E120F;
+      --bg-card: #2E1914;
+      --text-main: #FFFFFF;
+      --text-muted: #E0CFA7;
+      --border-color: #5C3227;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            padding-bottom: 60px;
-        }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
 
-        .header {
-            text-align: center;
-            padding: 35px 15px;
-            background-color: var(--primary-dark);
-            border-bottom: 4px solid var(--accent-gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        
-        .logo-ar {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--text-main);
-            text-shadow: 2px 2px 0px var(--accent-gold), 4px 4px 8px rgba(0,0,0,0.6);
-            letter-spacing: 1px;
-        }
+    header {
+      background: linear-gradient(180deg, rgba(30,18,15,0.95) 0%, rgba(46,25,20,0.95) 100%);
+      padding: 20px 15px;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+    }
 
-        .logo-en {
-            font-size: 1.7rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            margin-top: -5px;
-        }
+    .logo-title {
+      font-size: 1.8rem;
+      color: var(--accent-gold);
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-        .sub-bar {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--gold-light);
-            border-top: 1px solid var(--accent-gold);
-            border-bottom: 1px solid var(--accent-gold);
-            padding: 6px 0;
-            display: inline-block;
-            width: 90%;
-            max-width: 500px;
-            font-weight: bold;
-        }
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
 
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px auto;
-            max-width: 500px;
-            padding: 0 15px;
-        }
+    .lang-switch {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
 
-        .lang-btn {
-            flex: 1;
-            background-color: var(--bg-card);
-            color: var(--text-main);
-            text-align: center;
-            padding: 12px 5px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            border: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 4px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+    }
 
-        .lang-btn.active {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 10px rgba(212,175,55,0.4);
-        }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+    }
 
-        .nav-categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: 25px auto;
-            max-width: 900px;
-            padding: 0 15px;
-        }
+    .nav-tabs {
+      display: flex;
+      overflow-x: auto;
+      background: var(--primary-dark);
+      padding: 10px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      scrollbar-width: none;
+    }
 
-        .cat-btn {
-            background-color: var(--primary-dark);
-            color: var(--gold-light);
-            border: 1px solid var(--accent-gold);
-            padding: 10px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
-        }
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
 
-        .cat-btn.active-tab {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border-color: var(--accent-gold);
-        }
+    .tab-btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
 
-        .menu-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    .tab-btn.active {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+      border-color: var(--accent-gold);
+      font-weight: bold;
+    }
 
-        .menu-section {
-            display: none;
-        }
-        
-        .menu-section.active-section {
-            display: block;
-        }
+    .container {
+      padding: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .section-title {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin: 20px 0 25px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--border-color);
-            position: relative;
-        }
+    .menu-section {
+      display: none;
+    }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 80px;
-            height: 2px;
-            background-color: var(--accent-gold);
-        }
+    .menu-section.active {
+      display: block;
+    }
 
-        .menu-item {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+      border-bottom: 1px dashed var(--border-color);
+      padding-bottom: 5px;
+    }
 
-        .item-image {
-            width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            background-color: #442822;
-            border-bottom: 2px solid var(--border-color);
-        }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
 
-        .item-details {
-            padding: 18px;
-        }
+    .item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    .item-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-gold);
+    }
 
-        .item-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--text-main);
-        }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
 
-        .item-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-            background-color: var(--primary-dark);
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            white-space: nowrap;
-        }
+    .item-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--text-main);
+    }
 
-        .item-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-top: 6px;
-        }
+    .item-price {
+      color: var(--accent-gold);
+      font-weight: bold;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
 
-        .item-number {
-            color: var(--accent-gold);
-            font-weight: bold;
-            margin-left: 5px;
-        }
-        body.lang-de .item-number, body.lang-en .item-number {
-            margin-left: 0;
-            margin-right: 5px;
-        }
+    .item-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
 
-        /* تنسيق قائمة الخيارات (الحجم) */
-        .pizza-options {
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .pizza-options label {
-            font-size: 0.9rem;
-            color: var(--gold-light);
-            font-weight: bold;
-        }
-        .size-select {
-            background-color: var(--primary-dark);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            cursor: pointer;
-            outline: none;
-        }
-        .size-select:focus {
-            border-color: var(--accent-gold);
-        }
+    .size-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
 
-        .lang-el-ar { display: block; }
-        .lang-el-de { display: none; }
-        .lang-el-en { display: none; }
+    .size-btn {
+      flex: 1;
+      padding: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        body.lang-de { direction: ltr; }
-        body.lang-de .lang-el-ar { display: none; }
-        body.lang-de .lang-el-de { display: block; }
-        body.lang-de .lang-el-en { display: none; }
-        body.lang-de .section-title::after { left: 0; right: auto; }
+    .size-btn.active {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
 
-        body.lang-en { direction: ltr; }
-        body.lang-en .lang-el-ar { display: none; }
-        body.lang-en .lang-el-de { display: none; }
-        body.lang-en .lang-el-en { display: block; }
-        body.lang-en .section-title::after { left: 0; right: auto; }
+    .add-btn {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
 
-        /* تعديل خاص لإخفاء وإظهار نصوص الخيارات داخل الـ Select */
-        body.lang-ar select.size-select option .opt-ar { display: inline; }
-        body.lang-ar select.size-select option .opt-de { display: none; }
-        body.lang-ar select.size-select option .opt-en { display: none; }
+    .add-btn:hover {
+      background: var(--gold-light);
+    }
 
-        body.lang-de select.size-select option .opt-ar { display: none; }
-        body.lang-de select.size-select option .opt-de { display: inline; }
-        body.lang-de select.size-select option .opt-en { display: none; }
+    .cart-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--primary-dark);
+      border-top: 2px solid var(--accent-gold);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
 
-        body.lang-en select.size-select option .opt-ar { display: none; }
-        body.lang-en select.size-select option .opt-de { display: none; }
-        body.lang-en select.size-select option .opt-en { display: inline; }
-    </style>
+    .cart-info {
+      color: var(--text-main);
+    }
+
+    .cart-total {
+      color: var(--accent-gold);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .order-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="lang-ar">
+<body>
 
-    <div class="header">
-        <div class="logo-ar">الفرن الشامي</div>
-        <div class="logo-en">AL-SHAMI OFEN</div>
-        <div class="sub-bar">
-            <span class="lang-el-ar">صفيحة شامية - مناقيش - بيتزا - برك - سواريهات</span>
-            <span class="lang-el-de">Sfiha - Manakisch - Pizza - Börek - Soirées</span>
-            <span class="lang-el-en">Sfiha - Manakish - Pizza - Börek - Soirées</span>
-        </div>
-    </div>
-
+  <header>
+    <div class="logo-title">الفرن الشامي</div>
+    <div class="subtitle">Al-Shami Ofen - Sonnenallee</div>
     <div class="lang-switch">
-        <button class="lang-btn active" id="btn-ar" onclick="switchLang('ar')">🇸🇾 عربي</button>
-        <button class="lang-btn" id="btn-de" onclick="switchLang('de')">🇩🇪 Deutsch</button>
-        <button class="lang-btn" id="btn-en" onclick="switchLang('en')">🇬🇧 English</button>
+      <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
+      <button class="lang-btn" onclick="setLang('de')">Deutsch</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('manakish')">مناقيش / Manakish</button>
+    <button class="tab-btn" onclick="showTab('borek')">بوريك / Börek</button>
+    <button class="tab-btn" onclick="showTab('soiree')">سواري / Soirées</button>
+    <button class="tab-btn" onclick="showTab('pizza')">بيتزا / Pizza</button>
+    <button class="tab-btn" onclick="showTab('meals')">وجبات / Meals</button>
+    <button class="tab-btn" onclick="showTab('kilo')">بالكيلو / Per Kilo</button>
+  </nav>
+
+  <div class="container">
+    <!-- المناقيش -->
+    <div id="manakish" class="menu-section active">
+      <h2 class="section-title">المناقيش / Manakish</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">منقوشة زعتر</span>
+            <span class="item-price">€2.00</span>
+          </div>
+          <div class="item-desc">زعتر شامي أصيل مع زيت الزيتون</div>
+          <button class="add-btn" onclick="addToCart('منقوشة زعتر', 2.00)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">منقوشة جبنة بيضاء</span>
+            <span class="item-price">€3.00</span>
+          </div>
+          <div class="item-desc">جبنة عكّاوي / بلدية ممتازة</div>
+          <button class="add-btn" onclick="addToCart('منقوشة جبنة بيضاء', 3.00)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">منقوشة محمرة بالجبنة</span>
+            <span class="item-price">€3.50</span>
+          </div>
+          <div class="item-desc">خلطة المحمرة الشامية مع الجبنة الموزاريلا</div>
+          <button class="add-btn" onclick="addToCart('منقوشة محمرة بالجبنة', 3.50)">إضافة للطلب</button>
+        </div>
+      </div>
     </div>
 
-    <div class="nav-categories">
-        <button class="cat-btn active-tab" onclick="switchTab('sec-manakish', this)">
-            <span class="lang-el-ar">🥙 المناقيش</span>
-            <span class="lang-el-de">🥙 Manakish</span>
-            <span class="lang-el-en">🥙 Manakish</span>
-        </button>
-        <button class="cat-btn" onclick="switchTab('sec-borek', this)">
-            <span class="lang-el-ar">🥟 البرك</span>
-            <span class="lang-el-de">🥟 Börek</span>
-            <span class="lang-el-en">🥟 Börek</span>
-        </button>
-        <button class="cat-btn" onclick="switchTab('sec-soiree', this)">
-            <span class="lang-el-ar">🧁 السواريهات</span>
-            <span class="lang-el-de">🧁 Soirées</span>
-            <span class="lang-el-en">🧁 Soirées</span>
-        </button>
-        <button class="cat-btn" onclick="switchTab('sec-pizza', this)">
-            <span class="lang-el-ar">🍕 البيتزا</span>
-            <span class="lang-el-de">🍕 Pizza</span>
-            <span class="lang-el-en">🍕 Pizza</span>
-        </button>
-        <button class="cat-btn" onclick="switchTab('sec-meals', this)">
-            <span class="lang-el-ar">🍽️ الوجبات</span>
-            <span class="lang-el-de">🍽️ Menüs</span>
-            <span class="lang-el-en">🍽️ Meals</span>
-        </button>
-        <button class="cat-btn" onclick="switchTab('sec-kg', this)">
-            <span class="lang-el-ar">⚖️ الكيلو</span>
-            <span class="lang-el-de">⚖️ Kilo</span>
-            <span class="lang-el-en">⚖️ Kilo</span>
-        </button>
+    <!-- البوريك -->
+    <div id="borek" class="menu-section">
+      <h2 class="section-title">البوريك / Börek</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">بوريك بالجبنة</span>
+            <span class="item-price">€2.50</span>
+          </div>
+          <div class="item-desc">طبقات العجين الهش محشوة بالجبن</div>
+          <button class="add-btn" onclick="addToCart('بوريك بالجبنة', 2.50)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">بوريك بالسبانخ</span>
+            <span class="item-price">€2.50</span>
+          </div>
+          <div class="item-desc">سبانخ مع بصل ودبس الرمان</div>
+          <button class="add-btn" onclick="addToCart('بوريك بالسبانخ', 2.50)">إضافة للطلب</button>
+        </div>
+      </div>
     </div>
 
-    <div class="menu-container">
-
-        <!-- ================= قسم المناقيش ================= -->
-        <div id="sec-manakish" class="menu-section active-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم المناقيش الشامية</span>
-                <span class="lang-el-de">Manakish-Abteilung</span>
-                <span class="lang-el-en">Manakish Section</span>
-            </div>
-
-            <!-- 1. لحمة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532636875304-0c8fe119ff9e?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">1.</span> لحمة (لحم غنم ناعم)</span>
-                    <span class="lang-el-de"><span class="item-number">1.</span> Hackfleisch (Feines Lammhackfleisch)</span>
-                    <span class="lang-el-en"><span class="item-number">1.</span> Minced Meat (Fine Minced Lamb)</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 2. جبنة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">2.</span> جبنة</span>
-                    <span class="lang-el-de"><span class="item-number">2.</span> Käse</span>
-                    <span class="lang-el-en"><span class="item-number">2.</span> Cheese</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 3. محمرة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">3.</span> محمرة</span>
-                    <span class="lang-el-de"><span class="item-number">3.</span> Muhammara (Scharfe Paprikapaste)</span>
-                    <span class="lang-el-en"><span class="item-number">3.</span> Muhammara (Spicy Pepper Paste)</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 4. محمرة قشقوان -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">4.</span> محمرة مع جبنة قشقوان</span>
-                    <span class="lang-el-de"><span class="item-number">4.</span> Muhammara mit Kaschkawal-Käse</span>
-                    <span class="lang-el-en"><span class="item-number">4.</span> Muhammara with Kashkaval Cheese</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
-
-            <!-- 5. ميكس (نص جبنة ونص زعتر) -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://i.ibb.co/6R22zFhY/image-7.png');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">5.</span> ميكس (نصف جبنة ونصف زعتر)</span>
-                    <span class="lang-el-de"><span class="item-number">5.</span> Mix (Halb Käse / Halb Zatar)</span>
-                    <span class="lang-el-en"><span class="item-number">5.</span> Mix (Half Cheese / Half Zatar)</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 6. زعتر -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">6.</span> زعتر</span>
-                    <span class="lang-el-de"><span class="item-number">6.</span> Zatar</span>
-                    <span class="lang-el-en"><span class="item-number">6.</span> Zatar</span>
-                </span><span class="item-price">2.50 €</span></div></div>
-            </div>
-
-            <!-- 7. شيش دجاج -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1633d96328406-fcbc589c3628?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">7.</span> شيش دجاج</span>
-                    <span class="lang-el-de"><span class="item-number">7.</span> Schisch (Hähnchenbruststreifen)</span>
-                    <span class="lang-el-en"><span class="item-number">7.</span> Shish Chicken (Chicken Breast Strips)</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
-
-            <!-- 8. سبانخ -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">8.</span> سبانخ</span>
-                    <span class="lang-el-de"><span class="item-number">8.</span> Spinat</span>
-                    <span class="lang-el-en"><span class="item-number">8.</span> Spinach</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 9. سلامي -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532636875304-0c8fe119ff9e?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">9.</span> سلامي</span>
-                    <span class="lang-el-de"><span class="item-number">9.</span> Salami</span>
-                    <span class="lang-el-en"><span class="item-number">9.</span> Salami</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
-
-            <!-- 10. سجق -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532636875304-0c8fe119ff9e?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">10.</span> سجق</span>
-                    <span class="lang-el-de"><span class="item-number">10.</span> Sujuk (Gewürzte Rinderwurst)</span>
-                    <span class="lang-el-en"><span class="item-number">10.</span> Sujuk (Spiced Beef Sausage)</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
-
-            <!-- 11. توشكا -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">11.</span> توشكا (لحم وجبن)</span>
-                    <span class="lang-el-de"><span class="item-number">11.</span> Toschka (Hackfleisch mit Käse)</span>
-                    <span class="lang-el-en"><span class="item-number">11.</span> Toshka (Minced Meat with Cheese)</span>
-                </span><span class="item-price">4.00 €</span></div></div>
-            </div>
-
-            <!-- 12. جبنة شامية -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">12.</span> جبنة شامية</span>
-                    <span class="lang-el-de"><span class="item-number">12.</span> Traditioneller syrischer Käse</span>
-                    <span class="lang-el-en"><span class="item-number">12.</span> Traditional Syrian Cheese</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
+    <!-- باقي الأقسام -->
+    <div id="soiree" class="menu-section">
+      <h2 class="section-title">معجنات سواري / Soirées</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">مشكل سواري (12 قطعة)</span>
+            <span class="item-price">€10.00</span>
+          </div>
+          <div class="item-desc">تشكيلة معجنات صغيرة للحفلات والمناسبات</div>
+          <button class="add-btn" onclick="addToCart('مشكل سواري (12 قطعة)', 10.00)">إضافة للطلب</button>
         </div>
-
-        <!-- ================= قسم البرك ================= -->
-        <div id="sec-borek" class="menu-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم البرك المقرمشة</span>
-                <span class="lang-el-de">Börek-Abteilung</span>
-                <span class="lang-el-en">Börek Section</span>
-            </div>
-
-            <!-- 13. برك جبنة قشقوان -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">13.</span> برك جبنة قشقوان</span>
-                    <span class="lang-el-de"><span class="item-number">13.</span> Börek mit Kaschkawal-Käse</span>
-                    <span class="lang-el-en"><span class="item-number">13.</span> Börek with Kashkaval Cheese</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 14. برك جبنة دهن -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">14.</span> برك جبنة دهن</span>
-                    <span class="lang-el-de"><span class="item-number">14.</span> Börek mit Streichkäse</span>
-                    <span class="lang-el-en"><span class="item-number">14.</span> Börek with Cream Cheese</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 15. برك بيتزا -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">15.</span> برك بيتزا</span>
-                    <span class="lang-el-de"><span class="item-number">15.</span> Pizza-Börek</span>
-                    <span class="lang-el-en"><span class="item-number">15.</span> Pizza Börek</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-
-            <!-- 16. برك مرتديلا وقشقوان -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">16.</span> برك مرتديلا وقشقوان</span>
-                    <span class="lang-el-de"><span class="item-number">16.</span> Börek mit Mortadella & Kaschkawal</span>
-                    <span class="lang-el-en"><span class="item-number">16.</span> Börek with Mortadella & Kashkaval</span>
-                </span><span class="item-price">3.50 €</span></div></div>
-            </div>
-
-            <!-- 17. برك زيتون -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">17.</span> برك زيتون</span>
-                    <span class="lang-el-de"><span class="item-number">17.</span> Börek mit Oliven</span>
-                    <span class="lang-el-en"><span class="item-number">17.</span> Börek with Olives</span>
-                </span><span class="item-price">3.00 €</span></div></div>
-            </div>
-        </div>
-
-        <!-- ================= قسم السواريهات ================= -->
-        <div id="sec-soiree" class="menu-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم السواريهات (كرتونة 12 حبة للحفلات)</span>
-                <span class="lang-el-de">Soirées (12er Karton)</span>
-                <span class="lang-el-en">Soirées (Box of 12 Pcs)</span>
-            </div>
-
-            <!-- 18. سواريه جبنة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">18.</span> سواريه جبنة</span>
-                    <span class="lang-el-de"><span class="item-number">18.</span> Käse-Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">18.</span> Cheese Soirées</span>
-                </span><span class="item-price">8.00 €</span></div></div>
-            </div>
-
-            <!-- 19. سواريه زعتر -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">19.</span> سواريه زعتر</span>
-                    <span class="lang-el-de"><span class="item-number">19.</span> Zatar-Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">19.</span> Zatar Soirées</span>
-                </span><span class="item-price">7.00 €</span></div></div>
-            </div>
-
-            <!-- 20. سواريه محمرة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">20.</span> سواريه محمرة</span>
-                    <span class="lang-el-de"><span class="item-number">20.</span> Muhammara-Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">20.</span> Muhammara Soirées</span>
-                </span><span class="item-price">8.00 €</span></div></div>
-            </div>
-
-            <!-- 21. سواريه محمرة قشقوان -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">21.</span> سواريه محمرة قشقوان</span>
-                    <span class="lang-el-de"><span class="item-number">21.</span> Muhammara-Kaschkawal Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">21.</span> Muhammara-Kashkaval Soirées</span>
-                </span><span class="item-price">9.00 €</span></div></div>
-            </div>
-
-            <!-- 22. سواريه بيتزا -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">22.</span> سواريه بيتزا</span>
-                    <span class="lang-el-de"><span class="item-number">22.</span> Mini-Pizza Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">22.</span> Mini Pizza Soirées</span>
-                </span><span class="item-price">9.00 €</span></div></div>
-            </div>
-
-            <!-- 23. سواريه جبنة دهن -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">23.</span> سواريه جبنة دهن</span>
-                    <span class="lang-el-de"><span class="item-number">23.</span> Streichkäse-Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">23.</span> Cream Cheese Soirées</span>
-                </span><span class="item-price">8.00 €</span></div></div>
-            </div>
-
-            <!-- 24. سواريه سبانخ -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">24.</span> سواريه سبانخ</span>
-                    <span class="lang-el-de"><span class="item-number">24.</span> Spinat-Soirées</span>
-                    <span class="lang-el-en"><span class="item-number">24.</span> Spinach Soirées</span>
-                </span><span class="item-price">8.00 €</span></div></div>
-            </div>
-        </div>
-
-        <!-- ================= قسم البيتزا ================= -->
-        <div id="sec-pizza" class="menu-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم البيتزا الفريش</span>
-                <span class="lang-el-de">Pizza-Abteilung</span>
-                <span class="lang-el-en">Pizza Section</span>
-            </div>
-
-            <!-- 25. موزاريلا -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">25.</span> موزاريلا</span>
-                            <span class="lang-el-de"><span class="item-number">25.</span> Mozzarella</span>
-                            <span class="lang-el-en"><span class="item-number">25.</span> Mozzarella</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-25">6.00 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-25', 6.00, 8.00, 11.00)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 26. شيش -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">26.</span> شيش</span>
-                            <span class="lang-el-de"><span class="item-number">26.</span> Schisch (Hähnchen)</span>
-                            <span class="lang-el-en"><span class="item-number">26.</span> Shish (Chicken)</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-26">8.50 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-26', 8.50, 11.00, 14.50)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 27. تونفيش -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">27.</span> تونفيش</span>
-                            <span class="lang-el-de"><span class="item-number">27.</span> Thunfisch</span>
-                            <span class="lang-el-en"><span class="item-number">27.</span> Tuna</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-27">8.00 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-27', 8.00, 10.50, 13.50)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 28. الفصول الأربعة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">28.</span> الفصول الأربعة</span>
-                            <span class="lang-el-de"><span class="item-number">28.</span> Vier Jahreszeiten</span>
-                            <span class="lang-el-en"><span class="item-number">28.</span> Four Seasons</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-28">8.00 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-28', 8.00, 10.50, 13.50)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 29. سجق -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">29.</span> سجق</span>
-                            <span class="lang-el-de"><span class="item-number">29.</span> Sujuk</span>
-                            <span class="lang-el-en"><span class="item-number">29.</span> Sujuk</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-29">8.50 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-29', 8.50, 11.00, 14.50)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 30. سلامي -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header">
-                        <span class="item-title">
-                            <span class="lang-el-ar"><span class="item-number">30.</span> سلامي</span>
-                            <span class="lang-el-de"><span class="item-number">30.</span> Salami</span>
-                            <span class="lang-el-en"><span class="item-number">30.</span> Salami</span>
-                        </span>
-                        <span class="item-price" id="price-pizza-30">8.00 €</span>
-                    </div>
-                    <div class="pizza-options">
-                        <label>
-                            <span class="lang-el-ar">الحجم:</span>
-                            <span class="lang-el-de">Größe:</span>
-                            <span class="lang-el-en">Size:</span>
-                        </label>
-                        <select class="size-select" onchange="updatePizzaPrice(this, 'price-pizza-30', 8.00, 10.50, 13.50)">
-                            <option value="medium">
-                                <span class="opt-ar">وسط</span>
-                                <span class="opt-de">Medium</span>
-                                <span class="opt-en">Medium</span>
-                            </option>
-                            <option value="large">
-                                <span class="opt-ar">كبير</span>
-                                <span class="opt-de">Groß</span>
-                                <span class="opt-en">Large</span>
-                            </option>
-                            <option value="family">
-                                <span class="opt-ar">عائلي</span>
-                                <span class="opt-de">Familie</span>
-                                <span class="opt-en">Family</span>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= قسم الوجبات ================= -->
-        <div id="sec-meals" class="menu-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم الوجبات المميزة</span>
-                <span class="lang-el-de">Spezial-Menüs</span>
-                <span class="lang-el-en">Special Meals</span>
-            </div>
-
-            <!-- 31. صفيحة شامية -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">31.</span> وجبة صفيحة شامية (لحم غنم ناعم - 10 أقراص)</span>
-                    <span class="lang-el-de"><span class="item-number">31.</span> Syrische Sfiha (Feines Lammhackfleisch - 10 Stk)</span>
-                    <span class="lang-el-en"><span class="item-number">31.</span> Syrian Sfiha (Fine Minced Lamb - 10 Pcs)</span>
-                </span><span class="item-price">15.00 €</span></div></div>
-            </div>
-
-            <!-- 32. مجرمشة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">32.</span> وجبة مجرمشة (لحم غنم خشن شوي بالقرص)</span>
-                    <span class="lang-el-de"><span class="item-number">32.</span> Mjarmashe (Grob gehacktes Lammfleisch auf Teig)</span>
-                    <span class="lang-el-en"><span class="item-number">32.</span> Mjarmashe (Coarsely Chopped Lamb on Dough)</span>
-                </span><span class="item-price">16.00 €</span></div></div>
-            </div>
-
-            <!-- 33. شرحات على عجين -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">33.</span> وجبة شرحات على عجين (ستيك غنم على العجين)</span>
-                    <span class="lang-el-de"><span class="item-number">33.</span> Scharhat Ba'ajin (Lammsteaks auf dünnem Teig)</span>
-                    <span class="lang-el-en"><span class="item-number">33.</span> Sharhat Ba'ajin (Lamb Steaks on Thin Dough)</span>
-                </span><span class="item-price">18.00 €</span></div></div>
-            </div>
-
-            <!-- 34. صينية مشكلة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details">
-                    <div class="item-header"><span class="item-title">
-                        <span class="lang-el-ar"><span class="item-number">34.</span> صينية مشكلة (تشكيلة منوعة من المناقيش)</span>
-                        <span class="lang-el-de"><span class="item-number">34.</span> Gemischte Manakish-Platte (Al-Shami Spezial)</span>
-                        <span class="lang-el-en"><span class="item-number">34.</span> Mixed Manakish Platter (Al-Shami Special)</span>
-                    </span><span class="item-price">22.00 €</span></div>
-                    <p class="item-desc">
-                        <span class="lang-el-ar">صينية عائلية مميزة تحتوي على تشكيلة منوعة من أصناف المناقيش الفريش واللذيذة.</span>
-                        <span class="lang-el-de">Eine große gemischte Platte mit einer Auswahl unserer besten und frischesten Manakish-Sorten.</span>
-                        <span class="lang-el-en">A large mixed platter featuring a premium selection of our fresh and delicious Manakish.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= قسم الكيلو ================= -->
-        <div id="sec-kg" class="menu-section">
-            <div class="section-title">
-                <span class="lang-el-ar">قسم طلبات الكيلو والعزائم</span>
-                <span class="lang-el-de">Kilo-Bestellungen (KG)</span>
-                <span class="lang-el-en">By the Kilogram (KG)</span>
-            </div>
-
-            <!-- 35. كيلو صفيحة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">35.</span> كيلو صفيحة (لحم غنم ناعم)</span>
-                    <span class="lang-el-de"><span class="item-number">35.</span> 1 KG Syrische Sfiha (Feines Lammhackfleisch)</span>
-                    <span class="lang-el-en"><span class="item-number">35.</span> 1 KG Syrian Sfiha (Fine Minced Lamb)</span>
-                </span><span class="item-price">40.00 €</span></div></div>
-            </div>
-
-            <!-- 36. كيلو مجرمشة -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">36.</span> كيلو مجرمشة (لحم غنم خشن شوي)</span>
-                    <span class="lang-el-de"><span class="item-number">36.</span> 1 KG Mjarmashe (Grob gehacktes Lammfleisch)</span>
-                    <span class="lang-el-en"><span class="item-number">36.</span> 1 KG Mjarmashe (Coarsely Chopped Lamb)</span>
-                </span><span class="item-price">50.00 €</span></div></div>
-            </div>
-
-            <!-- 37. كيلو شرحات -->
-            <div class="menu-item">
-                <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="item-details"><div class="item-header"><span class="item-title">
-                    <span class="lang-el-ar"><span class="item-number">37.</span> كيلو شرحات (ستيك غنم على العجين)</span>
-                    <span class="lang-el-de"><span class="item-number">37.</span> 1 KG Scharhat Ba'ajin (Lammsteaks auf Teig)</span>
-                    <span class="lang-el-en"><span class="item-number">37.</span> 1 KG Sharhat Ba'ajin (Lamb Steaks on Dough)</span>
-                </span><span class="item-price">55.00 €</span></div></div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
-    <script>
-        function switchLang(lang) {
-            document.body.className = 'lang-' + lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            if(lang === 'ar') document.getElementById('btn-ar').classList.add('active');
-            if(lang === 'de') document.getElementById('btn-de').classList.add('active');
-            if(lang === 'en') document.getElementById('btn-en').classList.add('active');
-        }
+    <div id="pizza" class="menu-section">
+      <h2 class="section-title">بيتزا / Pizza</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">بيتزا مارجريتا</span>
+            <span class="item-price">€6.00</span>
+          </div>
+          <div class="item-desc">صلصة طماطم، جبنة موزاريلا، أوريجانو</div>
+          <button class="add-btn" onclick="addToCart('بيتزا مارجريتا', 6.00)">إضافة للطلب</button>
+        </div>
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">بيتزا الخضار</span>
+            <span class="item-price">€7.50</span>
+          </div>
+          <div class="item-desc">فلفل، فطر، زيتون، بصل، موزاريلا</div>
+          <button class="add-btn" onclick="addToCart('بيتزا الخضار', 7.50)">إضافة للطلب</button>
+        </div>
+      </div>
+    </div>
 
-        function switchTab(sectionId, element) {
-            document.querySelectorAll('.menu-section').forEach(sec => sec.classList.remove('active-section'));
-            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active-tab'));
-            document.getElementById(sectionId).classList.add('active-section');
-            element.classList.add('active-tab');
-            window.scrollTo({ top: document.querySelector('.nav-categories').offsetTop - 20, behavior: 'smooth' });
-        }
+    <div id="meals" class="menu-section">
+      <h2 class="section-title">وجبات / Meals</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">وجبة صفايح شامية</span>
+            <span class="item-price">€8.50</span>
+          </div>
+          <div class="item-desc">6 قطع صفايح مع اللبن والعيران</div>
+          <button class="add-btn" onclick="addToCart('وجبة صفايح شامية', 8.50)">إضافة للطلب</button>
+        </div>
+      </div>
+    </div>
 
-        // دالة تحديث سعر البيتزا فوراً بناءً على الحجم المختار
-        function updatePizzaPrice(selectElement, priceId, mediumPrice, largePrice, familyPrice) {
-            const size = selectElement.value;
-            let finalPrice = mediumPrice;
-            
-            if (size === 'large') {
-                finalPrice = largePrice;
-            } else if (size === 'family') {
-                finalPrice = familyPrice;
-            }
-            
-            document.getElementById(priceId).innerText = finalPrice.toFixed(2) + " €";
-        }
-    </script>
+    <div id="kilo" class="menu-section">
+      <h2 class="section-title">بالكيلو / Per Kilo</h2>
+      <div class="menu-grid">
+        <div class="item-card">
+          <div class="item-header">
+            <span class="item-title">كيلو صفيحة شامية</span>
+            <span class="item-price">€22.00</span>
+          </div>
+          <div class="item-desc">صفيحة باللحمة على الطريقة الشامية الأصلية</div>
+          <button class="add-btn" onclick="addToCart('كيلو صفيحة شامية', 22.00)">إضافة للطلب</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-bar">
+    <div class="cart-info">
+      <div>السلة: <span id="cart-count">0</span> عناصر</div>
+      <div class="cart-total" id="cart-total">0.00 €</div>
+    </div>
+    <a href="#" class="order-btn" onclick="sendWhatsApp()">
+      إرسال الطلب (WhatsApp)
+    </a>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function showTab(tabId) {
+      document.querySelectorAll('.menu-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    function addToCart(name, price) {
+      cart.push({name, price});
+      total += price;
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      document.getElementById('cart-count').innerText = cart.length;
+      document.getElementById('cart-total').innerText = total.toFixed(2) + ' €';
+    }
+
+    function sendWhatsApp() {
+      if(cart.length === 0) {
+        alert('السلة فارغة!');
+        return;
+      }
+      let text = "مرحباً الفرن الشامي، أرغب بطلب:\n";
+      cart.forEach((item, i) => {
+        text += `- ${item.name} (${item.price.toFixed(2)}€)\n`;
+      });
+      text += `\nالمجموع: ${total.toFixed(2)}€`;
+      
+      let encodedText = encodeURIComponent(text);
+      window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+    }
+
+    function setLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
