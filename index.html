@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الفرن الشامي - Al-Shami Ofen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary-dark: #2A120C;
@@ -20,14 +24,14 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.6;
-      padding-bottom: 100px;
+      padding-bottom: 110px;
     }
 
     header {
@@ -43,9 +47,9 @@
     }
 
     .logo-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--accent-gold);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       font-weight: 800;
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.6);
@@ -188,7 +192,7 @@
     }
 
     .item-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
     }
@@ -235,7 +239,7 @@
       right: 0;
       background: var(--primary-dark);
       border-top: 2px solid var(--accent-gold);
-      padding: 14px 24px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -253,18 +257,35 @@
       font-size: 1.25rem;
     }
 
+    .cart-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .clear-btn {
+      background: transparent;
+      border: 1px solid #ff4d4d;
+      color: #ff4d4d;
+      padding: 10px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
     .order-btn {
       background: #25D366;
       color: white;
       border: none;
-      padding: 12px 22px;
+      padding: 10px 20px;
       border-radius: 25px;
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .order-btn:hover {
@@ -285,176 +306,131 @@
   </header>
 
   <nav class="nav-tabs">
-    <button class="tab-btn active" id="tab-manakish" onclick="showTab(event, 'manakish')">المناقيش واللفائف</button>
-    <button class="tab-btn" id="tab-safaih" onclick="showTab(event, 'safaih')">الأقراص والشرحات</button>
+    <button class="tab-btn active" id="tab-borek" onclick="showTab(event, 'borek')">البرك</button>
+    <button class="tab-btn" id="tab-manakish" onclick="showTab(event, 'manakish')">المناقيش واللفائف</button>
     <button class="tab-btn" id="tab-pizza" onclick="showTab(event, 'pizza')">البيتزا</button>
-    <button class="tab-btn" id="tab-borek" onclick="showTab(event, 'borek')">البرك</button>
+    <button class="tab-btn" id="tab-safaih" onclick="showTab(event, 'safaih')">الصفائح والأقراص</button>
     <button class="tab-btn" id="tab-kilo" onclick="showTab(event, 'kilo')">طلبات بالكيلو</button>
   </nav>
 
   <div class="container">
 
-    <!-- 1. المناقيش واللفائف -->
-    <div id="manakish" class="menu-section active">
-      <h2 class="section-title" id="title-manakish">المناقيش واللفائف</h2>
+    <!-- 1. البرك -->
+    <div id="borek" class="menu-section active">
+      <h2 class="section-title" id="title-borek">قسم البرك</h2>
       <div class="menu-grid">
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m1-t">الجبنة الشامية</span>
-            <span class="item-price">€1.50</span>
-          </div>
-          <div class="item-desc" id="m1-d">Damaszener Käse</div>
-          <button class="add-btn" onclick="addToCart('الجبنة الشامية', 1.50)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="b1-t">برك زيتون</span><span class="item-price">€1.00</span></div>
+          <div class="item-desc" id="b1-d">Börek Oliven</div>
+          <button class="add-btn" onclick="addToCart('b1-t', 1.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m2-t">الزعتر</span>
-            <span class="item-price">€2.00</span>
-          </div>
-          <div class="item-desc" id="m2-d">Za'atar</div>
-          <button class="add-btn" onclick="addToCart('الزعتر', 2.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="b2-t">برك سبانخ</span><span class="item-price">€1.00</span></div>
+          <div class="item-desc" id="b2-d">Börek Spinat</div>
+          <button class="add-btn" onclick="addToCart('b2-t', 1.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m3-t">المحمرة</span>
-            <span class="item-price">€2.00</span>
-          </div>
-          <div class="item-desc" id="m3-d">Muhammara</div>
-          <button class="add-btn" onclick="addToCart('المحمرة', 2.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="b3-t">برك جبنة</span><span class="item-price">€1.00</span></div>
+          <div class="item-desc" id="b3-d">Börek Käse</div>
+          <button class="add-btn" onclick="addToCart('b3-t', 1.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m4-t">السبانخ</span>
-            <span class="item-price">€2.50</span>
-          </div>
-          <div class="item-desc" id="m4-d">Spinat</div>
-          <button class="add-btn" onclick="addToCart('السبانخ', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m5-t">الشيش</span>
-            <span class="item-price">€2.50</span>
-          </div>
-          <div class="item-desc" id="m5-d">Schisch Rolle</div>
-          <button class="add-btn" onclick="addToCart('الشيش', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m6-t">الجبنة</span>
-            <span class="item-price">€2.50</span>
-          </div>
-          <div class="item-desc" id="m6-d">Käse</div>
-          <button class="add-btn" onclick="addToCart('الجبنة', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m7-t">المحمرة بالقشقوان</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m7-d">Muhammara mit Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('المحمرة بالقشقوان', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m8-t">اللحمة</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m8-d">Fleisch Fladen</div>
-          <button class="add-btn" onclick="addToCart('اللحمة', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m9-t">السجق</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m9-d">Südjuk</div>
-          <button class="add-btn" onclick="addToCart('السجق', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m10-t">التوشكا</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m10-d">Töschka</div>
-          <button class="add-btn" onclick="addToCart('التوشكا', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m11-t">ميكس جبنة وزعتر</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m11-d">Käse & Za'atar Mix</div>
-          <button class="add-btn" onclick="addToCart('ميكس جبنة وزعتر', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m12-t">القشقوان</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m12-d">Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('القشقوان', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="m13-t">مرتديلا وقشقوان</span>
-            <span class="item-price">€3.00</span>
-          </div>
-          <div class="item-desc" id="m13-d">Mortadella mit Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('مرتديلا وقشقوان', 3.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="b4-t">برك كيري</span><span class="item-price">€1.00</span></div>
+          <div class="item-desc" id="b4-d">Börek Kiri</div>
+          <button class="add-btn" onclick="addToCart('b4-t', 1.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
 
-    <!-- 2. الأقراص والشرحات -->
-    <div id="safaih" class="menu-section">
-      <h2 class="section-title" id="title-safaih">الأقراص والشرحات (بالقرص)</h2>
+    <!-- 2. المناقيش واللفائف -->
+    <div id="manakish" class="menu-section">
+      <h2 class="section-title" id="title-manakish">المناقيش واللفائف</h2>
       <div class="menu-grid">
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="s1-t">الصفيحة الشامية</span>
-            <span class="item-price">€1.50</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="s1-t">الصفيحة الشامية</span><span class="item-price">€1.50</span></div>
           <div class="item-desc" id="s1-d">Damaszener Sfiha</div>
-          <button class="add-btn" onclick="addToCart('الصفيحة الشامية', 1.50)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('s1-t', 1.50)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="s2-t">قرص صفائح مناسبات</span>
-            <span class="item-price">€5.00</span>
-          </div>
-          <div class="item-desc" id="s2-d">Sfiha Teller</div>
-          <button class="add-btn" onclick="addToCart('قرص صفائح مناسبات', 5.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="m1-t">الجبنة الشامية</span><span class="item-price">€1.50</span></div>
+          <div class="item-desc" id="m1-d">Damaszener Käse</div>
+          <button class="add-btn" onclick="addToCart('m1-t', 1.50)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="s3-t">قرص مجرمشة</span>
-            <span class="item-price">€5.00</span>
-          </div>
-          <div class="item-desc" id="s3-d">Mjarmascha Fladen</div>
-          <button class="add-btn" onclick="addToCart('قرص مجرمشة', 5.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="m2-t">الزعتر</span><span class="item-price">€2.00</span></div>
+          <div class="item-desc" id="m2-d">Za'atar</div>
+          <button class="add-btn" onclick="addToCart('m2-t', 2.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="s4-t">قرص شرحات</span>
-            <span class="item-price">€8.00</span>
-          </div>
-          <div class="item-desc" id="s4-d">Schrahat Fladen</div>
-          <button class="add-btn" onclick="addToCart('قرص شرحات', 8.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="m3-t">المحمرة</span><span class="item-price">€2.00</span></div>
+          <div class="item-desc" id="m3-d">Muhammara</div>
+          <button class="add-btn" onclick="addToCart('m3-t', 2.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m4-t">السبانخ</span><span class="item-price">€2.50</span></div>
+          <div class="item-desc" id="m4-d">Spinat</div>
+          <button class="add-btn" onclick="addToCart('m4-t', 2.50)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m5-t">الشيش</span><span class="item-price">€2.50</span></div>
+          <div class="item-desc" id="m5-d">Schisch Rolle</div>
+          <button class="add-btn" onclick="addToCart('m5-t', 2.50)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m6-t">الجبنة</span><span class="item-price">€2.50</span></div>
+          <div class="item-desc" id="m6-d">Käse</div>
+          <button class="add-btn" onclick="addToCart('m6-t', 2.50)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m7-t">المحمرة بالقشقوان</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m7-d">Muhammara mit Kaschkaval</div>
+          <button class="add-btn" onclick="addToCart('m7-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m8-t">اللحمة</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m8-d">Fleisch Fladen</div>
+          <button class="add-btn" onclick="addToCart('m8-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m9-t">السجق</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m9-d">Südjuk</div>
+          <button class="add-btn" onclick="addToCart('m9-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m10-t">التوشكا</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m10-d">Töschka</div>
+          <button class="add-btn" onclick="addToCart('m10-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m11-t">ميكس جبنة وزعتر</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m11-d">Käse & Za'atar Mix</div>
+          <button class="add-btn" onclick="addToCart('m11-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m12-t">القشقوان</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m12-d">Kaschkaval</div>
+          <button class="add-btn" onclick="addToCart('m12-t', 3.00)">إضافة للطلب</button>
+        </div>
+
+        <div class="item-card">
+          <div class="item-header"><span class="item-title" id="m13-t">مرتديلا وقشقوان</span><span class="item-price">€3.00</span></div>
+          <div class="item-desc" id="m13-d">Mortadella mit Kaschkaval</div>
+          <button class="add-btn" onclick="addToCart('m13-t', 3.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
@@ -464,90 +440,57 @@
       <h2 class="section-title" id="title-pizza">البيتزا</h2>
       <div class="menu-grid">
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="p1-t">ميني بيتزا</span>
-            <span class="item-price">€3.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="p1-t">ميني بيتزا</span><span class="item-price">€3.00</span></div>
           <div class="item-desc" id="p1-d">Mini Pizza</div>
-          <button class="add-btn" onclick="addToCart('ميني بيتزا', 3.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('p1-t', 3.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="p2-t">بيتزا صغيرة</span>
-            <span class="item-price">€5.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="p2-t">بيتزا صغيرة</span><span class="item-price">€5.00</span></div>
           <div class="item-desc" id="p2-d">Pizza Klein</div>
-          <button class="add-btn" onclick="addToCart('بيتزا صغيرة', 5.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('p2-t', 5.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="p3-t">بيتزا وسط</span>
-            <span class="item-price">€8.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="p3-t">بيتزا وسط</span><span class="item-price">€8.00</span></div>
           <div class="item-desc" id="p3-d">Pizza Mittel</div>
-          <button class="add-btn" onclick="addToCart('بيتزا وسط', 8.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('p3-t', 8.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="p4-t">بيتزا كبيرة</span>
-            <span class="item-price">€12.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="p4-t">بيتزا كبيرة</span><span class="item-price">€12.00</span></div>
           <div class="item-desc" id="p4-d">Pizza Groß</div>
-          <button class="add-btn" onclick="addToCart('بيتزا كبيرة', 12.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('p4-t', 12.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="p5-t">بيتزا عائلية</span>
-            <span class="item-price">€18.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="p5-t">بيتزا عائلية</span><span class="item-price">€18.00</span></div>
           <div class="item-desc" id="p5-d">Pizza Familie</div>
-          <button class="add-btn" onclick="addToCart('بيتزا عائلية', 18.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('p5-t', 18.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
 
-    <!-- 4. البرك -->
-    <div id="borek" class="menu-section">
-      <h2 class="section-title" id="title-borek">قسم البرك</h2>
+    <!-- 4. الأقراص والشرحات -->
+    <div id="safaih" class="menu-section">
+      <h2 class="section-title" id="title-safaih">الأقراص والشرحات (بالقرص)</h2>
       <div class="menu-grid">
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="b1-t">برك زيتون</span>
-            <span class="item-price">€1.00</span>
-          </div>
-          <div class="item-desc" id="b1-d">Börek Oliven</div>
-          <button class="add-btn" onclick="addToCart('برك زيتون', 1.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="s2-t">قرص صفائح سناسل</span><span class="item-price">€5.00</span></div>
+          <div class="item-desc" id="s2-d">Sfiha Sanasel</div>
+          <button class="add-btn" onclick="addToCart('s2-t', 5.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="b2-t">برك سبانخ</span>
-            <span class="item-price">€1.00</span>
-          </div>
-          <div class="item-desc" id="b2-d">Börek Spinat</div>
-          <button class="add-btn" onclick="addToCart('برك سبانخ', 1.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="s3-t">قرص مجرمشة</span><span class="item-price">€5.00</span></div>
+          <div class="item-desc" id="s3-d">Mjarmascha Fladen</div>
+          <button class="add-btn" onclick="addToCart('s3-t', 5.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="b3-t">برك جبنة</span>
-            <span class="item-price">€1.00</span>
-          </div>
-          <div class="item-desc" id="b3-d">Börek Käse</div>
-          <button class="add-btn" onclick="addToCart('برك جبنة', 1.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="b4-t">برك كيري</span>
-            <span class="item-price">€1.00</span>
-          </div>
-          <div class="item-desc" id="b4-d">Börek Kiri</div>
-          <button class="add-btn" onclick="addToCart('برك كيري', 1.00)">إضافة للطلب</button>
+          <div class="item-header"><span class="item-title" id="s4-t">قرص شرحات</span><span class="item-price">€8.00</span></div>
+          <div class="item-desc" id="s4-d">Schrahat Fladen</div>
+          <button class="add-btn" onclick="addToCart('s4-t', 8.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
@@ -557,30 +500,21 @@
       <h2 class="section-title" id="title-kilo">طلبات بالكيلو (Nach Kilo)</h2>
       <div class="menu-grid">
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="k1-t">كيلو صفيحة</span>
-            <span class="item-price">€50.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="k1-t">كيلو صفيحة</span><span class="item-price">€50.00</span></div>
           <div class="item-desc" id="k1-d">1 kg Sfiha</div>
-          <button class="add-btn" onclick="addToCart('كيلو صفيحة', 50.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('k1-t', 50.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="k2-t">كيلو مجرمشة</span>
-            <span class="item-price">€50.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="k2-t">كيلو مجرمشة</span><span class="item-price">€50.00</span></div>
           <div class="item-desc" id="k2-d">1 kg Mjarmascha</div>
-          <button class="add-btn" onclick="addToCart('كيلو مجرمشة', 50.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('k2-t', 50.00)">إضافة للطلب</button>
         </div>
 
         <div class="item-card">
-          <div class="item-header">
-            <span class="item-title" id="k3-t">كيلو شرحات</span>
-            <span class="item-price">€55.00</span>
-          </div>
+          <div class="item-header"><span class="item-title" id="k3-t">كيلو شرحات</span><span class="item-price">€55.00</span></div>
           <div class="item-desc" id="k3-d">1 kg Schrahat</div>
-          <button class="add-btn" onclick="addToCart('كيلو شرحات', 55.00)">إضافة للطلب</button>
+          <button class="add-btn" onclick="addToCart('k3-t', 55.00)">إضافة للطلب</button>
         </div>
       </div>
     </div>
@@ -593,29 +527,35 @@
       <div><span id="label-cart">السلة:</span> <span id="cart-count">0</span> <span id="label-items">عناصر</span></div>
       <div class="cart-total" id="cart-total">0.00 €</div>
     </div>
-    <button class="order-btn" id="btn-order" onclick="sendWhatsApp()">إرسال الطلب (WhatsApp)</button>
+    <div class="cart-actions">
+      <button class="clear-btn" onclick="clearCart()" id="btn-clear">تفريغ</button>
+      <button class="order-btn" id="btn-order" onclick="sendWhatsApp()">إرسال الطلب (WhatsApp)</button>
+    </div>
   </div>
 
   <script>
-    var cart = [];
+    var restaurantPhone = "4915000000000"; 
+    
+    var cart = {};
     var total = 0;
     var currentLang = 'ar';
 
     var translations = {
       ar: {
         dir: 'rtl',
-        tabManakish: 'المناقيش واللفائف',
-        tabSafaih: 'الأقراص والشرحات',
-        tabPizza: 'البيتزا',
         tabBorek: 'البرك',
+        tabManakish: 'المناقيش واللفائف',
+        tabPizza: 'البيتزا',
+        tabSafaih: 'الصفائح والأقراص',
         tabKilo: 'طلبات بالكيلو',
 
-        titleManakish: 'المناقيش واللفائف',
-        titleSafaih: 'الأقراص والشرحات (بالقرص)',
-        titlePizza: 'البيتزا',
         titleBorek: 'قسم البرك',
+        titleManakish: 'المناقيش واللفائف',
+        titlePizza: 'البيتزا',
+        titleSafaih: 'الأقراص والشرحات (بالقرص)',
         titleKilo: 'طلبات بالكيلو (Nach Kilo)',
 
+        s1T: 'الصفيحة الشامية', s1D: 'Damaszener Sfiha',
         m1T: 'الجبنة الشامية', m1D: 'Damaszener Käse',
         m2T: 'الزعتر', m2D: "Za'atar",
         m3T: 'المحمرة', m3D: 'Muhammara',
@@ -630,8 +570,7 @@
         m12T: 'القشقوان', m12D: 'Kaschkaval',
         m13T: 'مرتديلا وقشقوان', m13D: 'Mortadella mit Kaschkaval',
 
-        s1T: 'الصفيحة الشامية', s1D: 'Damaszener Sfiha',
-        s2T: 'قرص صفائح مناسبات', s2D: 'Sfiha Teller',
+        s2T: 'قرص صفائح سناسل', s2D: 'Sfiha Sanasel',
         s3T: 'قرص مجرمشة', s3D: 'Mjarmascha Fladen',
         s4T: 'قرص شرحات', s4D: 'Schrahat Fladen',
 
@@ -653,22 +592,24 @@
         addBtn: 'إضافة للطلب',
         labelCart: 'السلة:',
         labelItems: 'عناصر',
-        btnOrder: 'إرسال الطلب (WhatsApp)'
+        btnOrder: 'إرسال الطلب (WhatsApp)',
+        btnClear: 'تفريغ'
       },
       de: {
         dir: 'ltr',
-        tabManakish: 'Manakisch & Rollen',
-        tabSafaih: 'Sfiha & Schrahat',
-        tabPizza: 'Pizza',
         tabBorek: 'Börek',
+        tabManakish: 'Manakisch & Rollen',
+        tabPizza: 'Pizza',
+        tabSafaih: 'Sfiha & Schrahat',
         tabKilo: 'Nach Kilo',
 
-        titleManakish: 'Manakisch & Spezial-Rollen',
-        titleSafaih: 'Sfiha & Schrahat Fladen',
-        titlePizza: 'Pizza',
         titleBorek: 'Börek Spezialitäten',
+        titleManakish: 'Manakisch & Spezial-Rollen',
+        titlePizza: 'Pizza',
+        titleSafaih: 'Sfiha & Schrahat Fladen',
         titleKilo: 'Bestellungen Nach Kilo',
 
+        s1T: 'Damaszener Sfiha', s1D: 'Sfiha Einzelstück',
         m1T: 'Damaszener Käse', m1D: 'Traditioneller Käse',
         m2T: "Za'atar", m2D: 'Thymian mit Olivenöl',
         m3T: 'Muhammara', m3D: 'Würzige Paprikapaste',
@@ -683,8 +624,7 @@
         m12T: 'Kaschkaval', m12D: 'Kaschkaval Käse',
         m13T: 'Mortadella mit Kaschkaval', m13D: 'Mortadella & Käse',
 
-        s1T: 'Damaszener Sfiha', s1D: 'Sfiha Einzelstück',
-        s2T: 'Sfiha Fladen', s2D: 'Großer Sfiha Fladen',
+        s2T: 'Sfiha Sanasel', s2D: 'Sfiha Sanasel Fladen',
         s3T: 'Mjarmascha Fladen', s3D: 'Würziger Fleischfladen',
         s4T: 'Schrahat Fladen', s4D: 'Fleischscheiben auf Teig',
 
@@ -706,22 +646,24 @@
         addBtn: 'Hinzufügen',
         labelCart: 'Warenkorb:',
         labelItems: 'Artikel',
-        btnOrder: 'Bestellen via WhatsApp'
+        btnOrder: 'Bestellen via WhatsApp',
+        btnClear: 'Leeren'
       },
       en: {
         dir: 'ltr',
-        tabManakish: 'Manakish & Rolls',
-        tabSafaih: 'Plates & Slices',
-        tabPizza: 'Pizza',
         tabBorek: 'Börek',
+        tabManakish: 'Manakish & Rolls',
+        tabPizza: 'Pizza',
+        tabSafaih: 'Plates & Slices',
         tabKilo: 'By Kilo',
 
-        titleManakish: 'Manakish & Special Rolls',
-        titleSafaih: 'Sfiha & Schrahat Flatbreads',
-        titlePizza: 'Pizza',
         titleBorek: 'Börek Pastries',
+        titleManakish: 'Manakish & Special Rolls',
+        titlePizza: 'Pizza',
+        titleSafaih: 'Sfiha & Schrahat Flatbreads',
         titleKilo: 'By Kilo Orders',
 
+        s1T: 'Damascene Sfiha', s1D: 'Single Sfiha',
         m1T: 'Damascus Cheese', m1D: 'Traditional Damascus Cheese',
         m2T: "Za'atar", m2D: 'Thyme with olive oil',
         m3T: 'Muhammara', m3D: 'Red pepper paste',
@@ -736,8 +678,7 @@
         m12T: 'Kaschkaval', m12D: 'Kaschkaval cheese',
         m13T: 'Mortadella & Kaschkaval', m13D: 'Mortadella with cheese',
 
-        s1T: 'Damascene Sfiha', s1D: 'Single Sfiha',
-        s2T: 'Sfiha Plate', s2D: 'Sfiha flatbread',
+        s2T: 'Sfiha Sanasel', s2D: 'Sfiha Sanasel flatbread',
         s3T: 'Mjarmascha Flatbread', s3D: 'Mjarmascha flatbread',
         s4T: 'Schrahat Flatbread', s4D: 'Meat slices flatbread',
 
@@ -759,7 +700,8 @@
         addBtn: 'Add to order',
         labelCart: 'Cart:',
         labelItems: 'items',
-        btnOrder: 'Send Order (WhatsApp)'
+        btnOrder: 'Send Order (WhatsApp)',
+        btnClear: 'Clear'
       }
     };
 
@@ -775,56 +717,25 @@
       buttons[1].classList.toggle('active', lang === 'de');
       buttons[2].classList.toggle('active', lang === 'en');
 
-      document.getElementById('tab-manakish').innerText = t.tabManakish;
-      document.getElementById('tab-safaih').innerText = t.tabSafaih;
-      document.getElementById('tab-pizza').innerText = t.tabPizza;
       document.getElementById('tab-borek').innerText = t.tabBorek;
+      document.getElementById('tab-manakish').innerText = t.tabManakish;
+      document.getElementById('tab-pizza').innerText = t.tabPizza;
+      document.getElementById('tab-safaih').innerText = t.tabSafaih;
       document.getElementById('tab-kilo').innerText = t.tabKilo;
 
-      document.getElementById('title-manakish').innerText = t.titleManakish;
-      document.getElementById('title-safaih').innerText = t.titleSafaih;
-      document.getElementById('title-pizza').innerText = t.titlePizza;
       document.getElementById('title-borek').innerText = t.titleBorek;
+      document.getElementById('title-manakish').innerText = t.titleManakish;
+      document.getElementById('title-pizza').innerText = t.titlePizza;
+      document.getElementById('title-safaih').innerText = t.titleSafaih;
       document.getElementById('title-kilo').innerText = t.titleKilo;
 
-      // Manakish
-      document.getElementById('m1-t').innerText = t.m1T; document.getElementById('m1-d').innerText = t.m1D;
-      document.getElementById('m2-t').innerText = t.m2T; document.getElementById('m2-d').innerText = t.m2D;
-      document.getElementById('m3-t').innerText = t.m3T; document.getElementById('m3-d').innerText = t.m3D;
-      document.getElementById('m4-t').innerText = t.m4T; document.getElementById('m4-d').innerText = t.m4D;
-      document.getElementById('m5-t').innerText = t.m5T; document.getElementById('m5-d').innerText = t.m5D;
-      document.getElementById('m6-t').innerText = t.m6T; document.getElementById('m6-d').innerText = t.m6D;
-      document.getElementById('m7-t').innerText = t.m7T; document.getElementById('m7-d').innerText = t.m7D;
-      document.getElementById('m8-t').innerText = t.m8T; document.getElementById('m8-d').innerText = t.m8D;
-      document.getElementById('m9-t').innerText = t.m9T; document.getElementById('m9-d').innerText = t.m9D;
-      document.getElementById('m10-t').innerText = t.m10T; document.getElementById('m10-d').innerText = t.m10D;
-      document.getElementById('m11-t').innerText = t.m11T; document.getElementById('m11-d').innerText = t.m11D;
-      document.getElementById('m12-t').innerText = t.m12T; document.getElementById('m12-d').innerText = t.m12D;
-      document.getElementById('m13-t').innerText = t.m13T; document.getElementById('m13-d').innerText = t.m13D;
-
-      // Safaih
-      document.getElementById('s1-t').innerText = t.s1T; document.getElementById('s1-d').innerText = t.s1D;
-      document.getElementById('s2-t').innerText = t.s2T; document.getElementById('s2-d').innerText = t.s2D;
-      document.getElementById('s3-t').innerText = t.s3T; document.getElementById('s3-d').innerText = t.s3D;
-      document.getElementById('s4-t').innerText = t.s4T; document.getElementById('s4-d').innerText = t.s4D;
-
-      // Pizza
-      document.getElementById('p1-t').innerText = t.p1T; document.getElementById('p1-d').innerText = t.p1D;
-      document.getElementById('p2-t').innerText = t.p2T; document.getElementById('p2-d').innerText = t.p2D;
-      document.getElementById('p3-t').innerText = t.p3T; document.getElementById('p3-d').innerText = t.p3D;
-      document.getElementById('p4-t').innerText = t.p4T; document.getElementById('p4-d').innerText = t.p4D;
-      document.getElementById('p5-t').innerText = t.p5T; document.getElementById('p5-d').innerText = t.p5D;
-
-      // Borek
-      document.getElementById('b1-t').innerText = t.b1T; document.getElementById('b1-d').innerText = t.b1D;
-      document.getElementById('b2-t').innerText = t.b2T; document.getElementById('b2-d').innerText = t.b2D;
-      document.getElementById('b3-t').innerText = t.b3T; document.getElementById('b3-d').innerText = t.b3D;
-      document.getElementById('b4-t').innerText = t.b4T; document.getElementById('b4-d').innerText = t.b4D;
-
-      // Kilo
-      document.getElementById('k1-t').innerText = t.k1T; document.getElementById('k1-d').innerText = t.k1D;
-      document.getElementById('k2-t').innerText = t.k2T; document.getElementById('k2-d').innerText = t.k2D;
-      document.getElementById('k3-t').innerText = t.k3T; document.getElementById('k3-d').innerText = t.k3D;
+      for (var key in t) {
+        if (key.endsWith('T') || key.endsWith('D')) {
+          var elId = key.replace('T', '-t').replace('D', '-d');
+          var el = document.getElementById(elId);
+          if (el) el.innerText = t[key];
+        }
+      }
 
       var addBtns = document.querySelectorAll('.add-btn');
       for (var i = 0; i < addBtns.length; i++) {
@@ -834,6 +745,7 @@
       document.getElementById('label-cart').innerText = t.labelCart;
       document.getElementById('label-items').innerText = t.labelItems;
       document.getElementById('btn-order').innerText = t.btnOrder;
+      document.getElementById('btn-clear').innerText = t.btnClear;
     }
 
     function showTab(evt, tabId) {
@@ -851,30 +763,52 @@
       evt.currentTarget.classList.add('active');
     }
 
-    function addToCart(name, price) {
-      cart.push({name: name, price: price});
+    function addToCart(elementId, price) {
+      if (!cart[elementId]) {
+        cart[elementId] = { count: 1, price: price };
+      } else {
+        cart[elementId].count += 1;
+      }
       total += price;
       updateCartDisplay();
     }
 
+    function clearCart() {
+      cart = {};
+      total = 0;
+      updateCartDisplay();
+    }
+
     function updateCartDisplay() {
-      document.getElementById('cart-count').innerText = cart.length;
+      var totalItems = 0;
+      for (var key in cart) {
+        totalItems += cart[key].count;
+      }
+      document.getElementById('cart-count').innerText = totalItems;
       document.getElementById('cart-total').innerText = total.toFixed(2) + ' €';
     }
 
     function sendWhatsApp() {
-      if (cart.length === 0) {
+      var keys = Object.keys(cart);
+      if (keys.length === 0) {
         alert(currentLang === 'ar' ? 'السلة فارغة!' : (currentLang === 'de' ? 'Der Warenkorb ist leer!' : 'Cart is empty!'));
         return;
       }
-      var text = (currentLang === 'ar' ? 'مرحباً الفرن الشامي، أرغب بطلب:\n' : (currentLang === 'de' ? 'Hallo Al-Shami Ofen, ich möchte bestellen:\n' : 'Hello Al-Shami Ofen, I would like to order:\n'));
-      for (var i = 0; i < cart.length; i++) {
-        text += "- " + cart[i].name + " (" + cart[i].price.toFixed(2) + "€)\n";
+
+      var text = (currentLang === 'ar' ? 'مرحباً الفرن الشامي، أرغب بطلب:\n\n' : (currentLang === 'de' ? 'Hallo Al-Shami Ofen, ich möchte bestellen:\n\n' : 'Hello Al-Shami Ofen, I would like to order:\n\n'));
+      
+      for (var i = 0; i < keys.length; i++) {
+        var itemKey = keys[i];
+        var name = translations[currentLang][itemKey.replace('-t', 'T')] || document.getElementById(itemKey).innerText;
+        var itemTotal = (cart[itemKey].price * cart[itemKey].count).toFixed(2);
+        text += "• " + cart[itemKey].count + "x " + name + " (" + itemTotal + "€)\n";
       }
-      text += "\n" + (currentLang === 'ar' ? 'المجموع: ' : (currentLang === 'de' ? 'Gesamt: ' : 'Total: ')) + total.toFixed(2) + "€";
+
+      text += "\n" + (currentLang === 'ar' ? 'المجموع الكلي: ' : (currentLang === 'de' ? 'Gesamtsumme: ' : 'Total Amount: ')) + total.toFixed(2) + " €";
       
       var encodedText = encodeURIComponent(text);
-      window.open("https://wa.me/?text=" + encodedText, "_blank");
+      var waUrl = restaurantPhone ? "https://wa.me/" + restaurantPhone + "?text=" + encodedText : "https://wa.me/?text=" + encodedText;
+      window.open(waUrl, "_blank");
     }
   </script>
 </body>
