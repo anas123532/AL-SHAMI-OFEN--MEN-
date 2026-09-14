@@ -1,816 +1,636 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الفرن الشامي - Al-Shami Ofen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary-dark: #2A120C;
-      --accent-gold: #D4AF37;
-      --gold-light: #F8E7A1;
-      --bg-dark: #1A0B08;
-      --bg-card: #341811;
-      --text-main: #FFFFFF;
-      --text-muted: #D9C3B0;
-      --border-color: #592B1D;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفرن الشامي - Al-Shami Ofen</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #d97706;
+            --primary-hover: #b45309;
+            --secondary-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --whatsapp-green: #25d366;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-bottom: 110px;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 90px;
+        }
 
-    header {
-      background: linear-gradient(180deg, rgba(26,11,8,0.98) 0%, rgba(42,18,12,0.95) 100%);
-      padding: 20px 15px;
-      text-align: center;
-      border-bottom: 2px solid var(--accent-gold);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
+        /* Header & Banner */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
 
-    .logo-title {
-      font-size: 2.2rem;
-      color: var(--accent-gold);
-      margin-bottom: 2px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-    }
+        .logo-area h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
 
-    .subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
+        .logo-area p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
 
-    .lang-switch {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+        /* Controls: Language Selector */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
 
-    .lang-btn {
-      background: transparent;
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 4px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
 
-    .lang-btn.active {
-      background: var(--accent-gold);
-      color: var(--bg-dark);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    }
+        .lang-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
 
-    .nav-tabs {
-      display: flex;
-      overflow-x: auto;
-      background: var(--primary-dark);
-      padding: 12px 10px;
-      gap: 10px;
-      border-bottom: 1px solid var(--border-color);
-      scrollbar-width: none;
-    }
+        /* Nav Tabs */
+        .nav-scroller {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
 
-    .nav-tabs::-webkit-scrollbar {
-      display: none;
-    }
+        .nav-scroller::-webkit-scrollbar {
+            display: none;
+        }
 
-    .tab-btn {
-      background: var(--bg-card);
-      color: var(--text-muted);
-      border: 1px solid var(--border-color);
-      padding: 10px 18px;
-      border-radius: 25px;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
+        .nav-tabs {
+            display: flex;
+            padding: 10px 16px;
+            gap: 8px;
+        }
 
-    .tab-btn.active {
-      background: linear-gradient(135deg, var(--accent-gold) 0%, #B89020 100%);
-      color: var(--bg-dark);
-      border-color: var(--accent-gold);
-      font-weight: 800;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-    }
+        .tab-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    .container {
-      padding: 20px 15px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
 
-    .menu-section {
-      display: none;
-    }
+        /* Main Container & Sections */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
 
-    .menu-section.active {
-      display: block;
-      animation: fadeIn 0.4s ease-in-out;
-    }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 24px 0 16px;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            width: max-content;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
 
-    .section-title {
-      font-size: 1.4rem;
-      color: var(--gold-light);
-      margin-bottom: 18px;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
 
-    .section-title::before {
-      content: '';
-      display: inline-block;
-      width: 8px;
-      height: 20px;
-      background: var(--accent-gold);
-      border-radius: 4px;
-    }
+        .menu-card:hover {
+            transform: translateY(-3px);
+        }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .item-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .item-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      border-color: var(--accent-gold);
-    }
+        .placeholder-img {
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            opacity: 0.4;
+        }
 
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
-      gap: 8px;
-    }
+        .card-body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
 
-    .item-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
+        .item-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 6px;
+        }
 
-    .item-price {
-      color: var(--accent-gold);
-      font-weight: 800;
-      font-size: 1.1rem;
-      white-space: nowrap;
-      background: rgba(212, 175, 55, 0.1);
-      padding: 2px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-    }
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
 
-    .item-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      font-style: italic;
-    }
+        /* Add to Cart Actions */
+        .card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
 
-    .add-btn {
-      background: linear-gradient(135deg, var(--accent-gold) 0%, #B89020 100%);
-      color: var(--bg-dark);
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.1s;
-    }
+        .add-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
 
-    .add-btn:active {
-      transform: scale(0.98);
-    }
+        .add-btn:hover {
+            background: var(--primary-hover);
+        }
 
-    .cart-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--primary-dark);
-      border-top: 2px solid var(--accent-gold);
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 -5px 20px rgba(0,0,0,0.7);
-    }
+        .qty-controls {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 2px;
+        }
 
-    .cart-info {
-      color: var(--text-main);
-    }
+        .qty-controls.active {
+            display: flex;
+        }
 
-    .cart-total {
-      color: var(--accent-gold);
-      font-weight: bold;
-      font-size: 1.25rem;
-    }
+        .qty-btn {
+            background: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            font-weight: 800;
+            color: var(--text-color);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
 
-    .cart-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+        .qty-num {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
 
-    .clear-btn {
-      background: transparent;
-      border: 1px solid #ff4d4d;
-      color: #ff4d4d;
-      padding: 10px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: bold;
-    }
+        /* Floating Cart Bar */
+        .cart-bar {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 600px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
 
-    .order-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-      font-size: 0.95rem;
-    }
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .order-btn:hover {
-      background: #20BA5A;
-    }
-  </style>
+        .cart-badge {
+            background: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .cart-price {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .order-btn {
+            background: var(--whatsapp-green);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* Responsive Layout Adjustments */
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .card-img-wrapper {
+                height: 120px;
+            }
+            .item-title {
+                font-size: 0.9rem;
+            }
+            .item-price {
+                font-size: 0.95rem;
+            }
+            .add-btn {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-title">الفرن الشامي</div>
-    <div class="subtitle">Al-Shami Ofen - Sonnenallee</div>
-    <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLanguage('ar')">عربي</button>
-      <button class="lang-btn" onclick="setLanguage('de')">Deutsch</button>
-      <button class="lang-btn" onclick="setLanguage('en')">English</button>
-    </div>
-  </header>
-
-  <!-- شريط التنقل بالترتيب الجديد -->
-  <nav class="nav-tabs">
-    <button class="tab-btn active" id="tab-borek" onclick="showTab(event, 'borek')">البرك</button>
-    <button class="tab-btn" id="tab-manakish" onclick="showTab(event, 'manakish')">المناقيش واللفائف</button>
-    <button class="tab-btn" id="tab-pizza" onclick="showTab(event, 'pizza')">البيتزا</button>
-    <button class="tab-btn" id="tab-safaih" onclick="showTab(event, 'safaih')">الصفائح والأقراص</button>
-    <button class="tab-btn" id="tab-kilo" onclick="showTab(event, 'kilo')">طلبات بالكيلو</button>
-  </nav>
-
-  <div class="container">
-
-    <!-- 1. قسم البرك -->
-    <div id="borek" class="menu-section active">
-      <h2 class="section-title" id="title-borek">قسم البرك</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="b1-t">برك زيتون</span><span class="item-price">€1.00</span></div>
-          <div class="item-desc" id="b1-d">Börek Oliven</div>
-          <button class="add-btn" onclick="addToCart('b1-t', 1.00)">إضافة للطلب</button>
+    <header>
+        <div class="logo-area">
+            <h1>الفرن الشامي</h1>
+            <p>Al-Shami Ofen</p>
         </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="b2-t">برك سبانخ</span><span class="item-price">€1.00</span></div>
-          <div class="item-desc" id="b2-d">Börek Spinat</div>
-          <button class="add-btn" onclick="addToCart('b2-t', 1.00)">إضافة للطلب</button>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('ar')">العربية</button>
+            <button class="lang-btn" onclick="switchLang('de')">Deutsch</button>
+            <button class="lang-btn" onclick="switchLang('en')">English</button>
         </div>
+    </header>
 
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="b3-t">برك جبنة</span><span class="item-price">€1.00</span></div>
-          <div class="item-desc" id="b3-d">Börek Käse</div>
-          <button class="add-btn" onclick="addToCart('b3-t', 1.00)">إضافة للطلب</button>
+    <div class="nav-scroller">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="scrollToSection('borek')" id="tab-borek">بورك</button>
+            <button class="tab-btn" onclick="scrollToSection('manakish')" id="tab-manakish">مناقيش ولفائف</button>
+            <button class="tab-btn" onclick="scrollToSection('pizza')" id="tab-pizza">بيتزا</button>
+            <button class="tab-btn" onclick="scrollToSection('sfiha')" id="tab-sfiha">صفيحة وأقراص</button>
+            <button class="tab-btn" onclick="scrollToSection('kilo')" id="tab-kilo">طلبات الكيلو</button>
         </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="b4-t">برك كيري</span><span class="item-price">€1.00</span></div>
-          <div class="item-desc" id="b4-d">Börek Kiri</div>
-          <button class="add-btn" onclick="addToCart('b4-t', 1.00)">إضافة للطلب</button>
-        </div>
-      </div>
     </div>
 
-    <!-- 2. قسم المناقيش واللفائف (يتضمن الصفيحة الشامية €1.50) -->
-    <div id="manakish" class="menu-section">
-      <h2 class="section-title" id="title-manakish">المناقيش واللفائف</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="s1-t">الصفيحة الشامية</span><span class="item-price">€1.50</span></div>
-          <div class="item-desc" id="s1-d">Damaszener Sfiha</div>
-          <button class="add-btn" onclick="addToCart('s1-t', 1.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m1-t">الجبنة الشامية</span><span class="item-price">€1.50</span></div>
-          <div class="item-desc" id="m1-d">Damaszener Käse</div>
-          <button class="add-btn" onclick="addToCart('m1-t', 1.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m2-t">الزعتر</span><span class="item-price">€2.00</span></div>
-          <div class="item-desc" id="m2-d">Za'atar</div>
-          <button class="add-btn" onclick="addToCart('m2-t', 2.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m3-t">المحمرة</span><span class="item-price">€2.00</span></div>
-          <div class="item-desc" id="m3-d">Muhammara</div>
-          <button class="add-btn" onclick="addToCart('m3-t', 2.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m4-t">السبانخ</span><span class="item-price">€2.50</span></div>
-          <div class="item-desc" id="m4-d">Spinat</div>
-          <button class="add-btn" onclick="addToCart('m4-t', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m5-t">الشيش</span><span class="item-price">€2.50</span></div>
-          <div class="item-desc" id="m5-d">Schisch Rolle</div>
-          <button class="add-btn" onclick="addToCart('m5-t', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m6-t">الجبنة</span><span class="item-price">€2.50</span></div>
-          <div class="item-desc" id="m6-d">Käse</div>
-          <button class="add-btn" onclick="addToCart('m6-t', 2.50)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m7-t">المحمرة بالقشقوان</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m7-d">Muhammara mit Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('m7-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m8-t">اللحمة</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m8-d">Fleisch Fladen</div>
-          <button class="add-btn" onclick="addToCart('m8-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m9-t">السجق</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m9-d">Südjuk</div>
-          <button class="add-btn" onclick="addToCart('m9-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m10-t">التوشكا</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m10-d">Töschka</div>
-          <button class="add-btn" onclick="addToCart('m10-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m11-t">ميكس جبنة وزعتر</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m11-d">Käse & Za'atar Mix</div>
-          <button class="add-btn" onclick="addToCart('m11-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m12-t">القشقوان</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m12-d">Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('m12-t', 3.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="m13-t">مرتديلا وقشقوان</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="m13-d">Mortadella mit Kaschkaval</div>
-          <button class="add-btn" onclick="addToCart('m13-t', 3.00)">إضافة للطلب</button>
-        </div>
-      </div>
+    <div class="container" id="menu-container">
+        <!-- Content dynamically generated -->
     </div>
 
-    <!-- 3. قسم البيتزا -->
-    <div id="pizza" class="menu-section">
-      <h2 class="section-title" id="title-pizza">البيتزا</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="p1-t">ميني بيتزا</span><span class="item-price">€3.00</span></div>
-          <div class="item-desc" id="p1-d">Mini Pizza</div>
-          <button class="add-btn" onclick="addToCart('p1-t', 3.00)">إضافة للطلب</button>
+    <div class="cart-bar">
+        <div class="cart-info">
+            <div class="cart-badge" id="cart-count">0</div>
+            <div class="cart-price" id="cart-total">€0.00</div>
         </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="p2-t">بيتزا صغيرة</span><span class="item-price">€5.00</span></div>
-          <div class="item-desc" id="p2-d">Pizza Klein</div>
-          <button class="add-btn" onclick="addToCart('p2-t', 5.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="p3-t">بيتزا وسط</span><span class="item-price">€8.00</span></div>
-          <div class="item-desc" id="p3-d">Pizza Mittel</div>
-          <button class="add-btn" onclick="addToCart('p3-t', 8.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="p4-t">بيتزا كبيرة</span><span class="item-price">€12.00</span></div>
-          <div class="item-desc" id="p4-d">Pizza Groß</div>
-          <button class="add-btn" onclick="addToCart('p4-t', 12.00)">إضافة للطلب</button>
-        </div>
-
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="p5-t">بيتزا عائلية</span><span class="item-price">€18.00</span></div>
-          <div class="item-desc" id="p5-d">Pizza Familie</div>
-          <button class="add-btn" onclick="addToCart('p5-t', 18.00)">إضافة للطلب</button>
-        </div>
-      </div>
+        <button class="order-btn" onclick="sendOrder()">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span id="order-btn-text">إرسال الطلب</span>
+        </button>
     </div>
 
-    <!-- 4. قسم الأقراص والشرحات (محدث لقرص صفائح سناسل) -->
-    <div id="safaih" class="menu-section">
-      <h2 class="section-title" id="title-safaih">الأقراص والشرحات (بالقرص)</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="s2-t">قرص صفائح سناسل</span><span class="item-price">€5.00</span></div>
-          <div class="item-desc" id="s2-d">Sfiha Sanasel</div>
-          <button class="add-btn" onclick="addToCart('s2-t', 5.00)">إضافة للطلب</button>
-        </div>
+    <script>
+        // Dictionary for Multilingual Support
+        const i18n = {
+            ar: {
+                categories: {
+                    borek: "قسم البورك",
+                    manakish: "قسم المناقيش واللفائف",
+                    pizza: "قسم البيتزا",
+                    sfiha: "قسم الصفيحة والأقراص",
+                    kilo: "قسم طلبات الكيلو"
+                },
+                tabs: {
+                    borek: "بورك",
+                    manakish: "مناقيش ولفائف",
+                    pizza: "بيتزا",
+                    sfiha: "صفيحة وأقراص",
+                    kilo: "طلبات الكيلو"
+                },
+                add: "إضافة",
+                order: "إرسال الطلب",
+                currency: "€"
+            },
+            de: {
+                categories: {
+                    borek: "Burek",
+                    manakish: "Manakish & Rollen",
+                    pizza: "Pizza",
+                    sfiha: "Sfiha & Stücke",
+                    kilo: "Kilo-Bestellungen"
+                },
+                tabs: {
+                    borek: "Burek",
+                    manakish: "Manakish",
+                    pizza: "Pizza",
+                    sfiha: "Sfiha",
+                    kilo: "Kilo"
+                },
+                add: "Hinzufügen",
+                order: "Bestellen",
+                currency: "€"
+            },
+            en: {
+                categories: {
+                    borek: "Borek Section",
+                    manakish: "Manakish & Rolls",
+                    pizza: "Pizza",
+                    sfiha: "Sfiha & Slices",
+                    kilo: "Kilo Orders"
+                },
+                tabs: {
+                    borek: "Borek",
+                    manakish: "Manakish",
+                    pizza: "Pizza",
+                    sfiha: "Sfiha",
+                    kilo: "Kilo"
+                },
+                add: "Add",
+                order: "Send Order",
+                currency: "€"
+            }
+        };
 
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="s3-t">قرص مجرمشة</span><span class="item-price">€5.00</span></div>
-          <div class="item-desc" id="s3-d">Mjarmascha Fladen</div>
-          <button class="add-btn" onclick="addToCart('s3-t', 5.00)">إضافة للطلب</button>
-        </div>
+        // Menu Data Architecture
+        const menuData = [
+            // Borek
+            { id: "b1", category: "borek", price: 1.50, name: { ar: "بورك جبنة", de: "Burek Käse", en: "Cheese Borek" }, image: "" },
+            { id: "b2", category: "borek", price: 1.50, name: { ar: "بورك بطاطا", de: "Burek Kartoffeln", en: "Potato Borek" }, image: "" },
 
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="s4-t">قرص شرحات</span><span class="item-price">€8.00</span></div>
-          <div class="item-desc" id="s4-d">Schrahat Fladen</div>
-          <button class="add-btn" onclick="addToCart('s4-t', 8.00)">إضافة للطلب</button>
-        </div>
-      </div>
-    </div>
+            // Manakish & Rolls
+            { id: "m1", category: "manakish", price: 1.50, name: { ar: "جبنة شامية", de: "Schami Käse", en: "Shami Cheese" }, image: "image_2.png" },
+            { id: "m2", category: "manakish", price: 3.00, name: { ar: "قشقوان", de: "Kashkaval", en: "Kashkaval" }, image: "image_3.png" },
+            { id: "m3", category: "manakish", price: 2.50, name: { ar: "جبنة", de: "Käse", en: "Cheese" }, image: "image_4.png" },
+            { id: "m4", category: "manakish", price: 3.00, name: { ar: "لحمة", de: "Fleisch", en: "Meat" }, image: "image_5.png" },
+            { id: "m5", category: "manakish", price: 3.00, name: { ar: "سبانخ", de: "Spinat", en: "Spinach" }, image: "image_6.png" },
+            { id: "m6", category: "manakish", price: 3.00, name: { ar: "محمرة بالقشقوان", de: "Muhammara mit Kashkaval", en: "Muhammara with Kashkaval" }, image: "image_7.png" },
+            { id: "m7", category: "manakish", price: 3.00, name: { ar: "ميني بيتزا", de: "Mini Pizza", en: "Mini Pizza" }, image: "image_8.png" },
+            { id: "m8", category: "manakish", price: 3.00, name: { ar: "زعتر", de: "Zaatar", en: "Zaatar" }, image: "image_9.png" },
+            { id: "m9", category: "manakish", price: 2.00, name: { ar: "محمرة", de: "Muhammara", en: "Muhammara" }, image: "image_10.png" },
+            { id: "m10", category: "manakish", price: 3.00, name: { ar: "ميكس (زعتر وجبنة)", de: "Mix (Zaatar & Käse)", en: "Mix (Zaatar & Cheese)" }, image: "image_11.png" },
+            { id: "m11", category: "manakish", price: 5.00, name: { ar: "سناسل", de: "Sanasel", en: "Sanasel" }, image: "image_12.png" },
+            { id: "m12", category: "manakish", price: 5.00, name: { ar: "مجرمشة", de: "Mujarmasha", en: "Mujarmasha" }, image: "image_13.png" },
 
-    <!-- 5. قسم طلبات بالكيلو -->
-    <div id="kilo" class="menu-section">
-      <h2 class="section-title" id="title-kilo">طلبات بالكيلو (Nach Kilo)</h2>
-      <div class="menu-grid">
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="k1-t">كيلو صفيحة</span><span class="item-price">€50.00</span></div>
-          <div class="item-desc" id="k1-d">1 kg Sfiha</div>
-          <button class="add-btn" onclick="addToCart('k1-t', 50.00)">إضافة للطلب</button>
-        </div>
+            // Pizza
+            { id: "p1", category: "pizza", price: 6.00, name: { ar: "بيتزا مارغريتا", de: "Pizza Margherita", en: "Pizza Margherita" }, image: "" },
+            { id: "p2", category: "pizza", price: 7.00, name: { ar: "بيتزا خضار", de: "Pizza Gemüse", en: "Vegetable Pizza" }, image: "" },
+            { id: "p3", category: "pizza", price: 8.00, name: { ar: "بيتزا شامية (سجق / مرتديلا / لحم)", de: "Schami Pizza (Sujuk/Salami/Fleisch)", en: "Shami Pizza (Sujuk/Mortadella/Meat)" }, image: "" },
 
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="k2-t">كيلو مجرمشة</span><span class="item-price">€50.00</span></div>
-          <div class="item-desc" id="k2-d">1 kg Mjarmascha</div>
-          <button class="add-btn" onclick="addToCart('k2-t', 50.00)">إضافة للطلب</button>
-        </div>
+            // Sfiha & Slices
+            { id: "s1", category: "sfiha", price: 1.50, name: { ar: "صفيحة شامية", de: "Schami Sfiha", en: "Shami Sfiha" }, image: "image_14.png" },
+            { id: "s2", category: "sfiha", price: 1.50, name: { ar: "قرص جبنة", de: "Käse Stück", en: "Cheese Slice" }, image: "" },
+            { id: "s3", category: "sfiha", price: 1.50, name: { ar: "قرص سبانخ", de: "Spinat Stück", en: "Spinach Slice" }, image: "" },
+            { id: "s4", category: "sfiha", price: 1.50, name: { ar: "قرص محمرة", de: "Muhammara Stück", en: "Muhammara Slice" }, image: "" },
+            { id: "s5", category: "sfiha", price: 5.00, name: { ar: "صفيحة سناسل", de: "Sfiha Sanasel", en: "Sfiha Sanasel" }, image: "" },
 
-        <div class="item-card">
-          <div class="item-header"><span class="item-title" id="k3-t">كيلو شرحات</span><span class="item-price">€55.00</span></div>
-          <div class="item-desc" id="k3-d">1 kg Schrahat</div>
-          <button class="add-btn" onclick="addToCart('k3-t', 55.00)">إضافة للطلب</button>
-        </div>
-      </div>
-    </div>
+            // Kilo Orders
+            { id: "k1", category: "kilo", price: 25.00, name: { ar: "كيلو صفيحة شامية", de: "1 Kilo Schami Sfiha", en: "1 Kilo Shami Sfiha" }, image: "" },
+            { id: "k2", category: "kilo", price: 25.00, name: { ar: "كيلو معجنات مشكلة", de: "1 Kilo Gemischtes Gebäck", en: "1 Kilo Mixed Pastries" }, image: "" }
+        ];
 
-  </div>
+        let currentLang = 'ar';
+        let cart = {};
 
-  <!-- السلة الثابتة -->
-  <div class="cart-bar">
-    <div class="cart-info">
-      <div><span id="label-cart">السلة:</span> <span id="cart-count">0</span> <span id="label-items">عناصر</span></div>
-      <div class="cart-total" id="cart-total">0.00 €</div>
-    </div>
-    <div class="cart-actions">
-      <button class="clear-btn" onclick="clearCart()" id="btn-clear">تفريغ</button>
-      <button class="order-btn" id="btn-order" onclick="sendWhatsApp()">إرسال الطلب (WhatsApp)</button>
-    </div>
-  </div>
+        function switchLang(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
-  <script>
-    var restaurantPhone = "4915000000000"; 
-    
-    var cart = {};
-    var total = 0;
-    var currentLang = 'ar';
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-    var translations = {
-      ar: {
-        dir: 'rtl',
-        tabBorek: 'البرك',
-        tabManakish: 'المناقيش واللفائف',
-        tabPizza: 'البيتزا',
-        tabSafaih: 'الصفائح والأقراص',
-        tabKilo: 'طلبات بالكيلو',
+            // Update Tab texts
+            document.getElementById('tab-borek').innerText = i18n[lang].tabs.borek;
+            document.getElementById('tab-manakish').innerText = i18n[lang].tabs.manakish;
+            document.getElementById('tab-pizza').innerText = i18n[lang].tabs.pizza;
+            document.getElementById('tab-sfiha').innerText = i18n[lang].tabs.sfiha;
+            document.getElementById('tab-kilo').innerText = i18n[lang].tabs.kilo;
+            document.getElementById('order-btn-text').innerText = i18n[lang].order;
 
-        titleBorek: 'قسم البرك',
-        titleManakish: 'المناقيش واللفائف',
-        titlePizza: 'البيتزا',
-        titleSafaih: 'الأقراص والشرحات (بالقرص)',
-        titleKilo: 'طلبات بالكيلو (Nach Kilo)',
-
-        s1T: 'الصفيحة الشامية', s1D: 'Damaszener Sfiha',
-        m1T: 'الجبنة الشامية', m1D: 'Damaszener Käse',
-        m2T: 'الزعتر', m2D: "Za'atar",
-        m3T: 'المحمرة', m3D: 'Muhammara',
-        m4T: 'السبانخ', m4D: 'Spinat',
-        m5T: 'الشيش', m5D: 'Schisch Rolle',
-        m6T: 'الجبنة', m6D: 'Käse',
-        m7T: 'المحمرة بالقشقوان', m7D: 'Muhammara mit Kaschkaval',
-        m8T: 'اللحمة', m8D: 'Fleisch Fladen',
-        m9T: 'السجق', m9D: 'Südjuk',
-        m10T: 'التوشكا', m10D: 'Töschka',
-        m11T: 'ميكس جبنة وزعتر', m11D: "Käse & Za'atar Mix",
-        m12T: 'القشقوان', m12D: 'Kaschkaval',
-        m13T: 'مرتديلا وقشقوان', m13D: 'Mortadella mit Kaschkaval',
-
-        s2T: 'قرص صفائح سناسل', s2D: 'Sfiha Sanasel',
-        s3T: 'قرص مجرمشة', s3D: 'Mjarmascha Fladen',
-        s4T: 'قرص شرحات', s4D: 'Schrahat Fladen',
-
-        p1T: 'ميني بيتزا', p1D: 'Mini Pizza',
-        p2T: 'بيتزا صغيرة', p2D: 'Pizza Klein',
-        p3T: 'بيتزا وسط', p3D: 'Pizza Mittel',
-        p4T: 'بيتزا كبيرة', p4D: 'Pizza Groß',
-        p5T: 'بيتزا عائلية', p5D: 'Pizza Familie',
-
-        b1T: 'برك زيتون', b1D: 'Börek Oliven',
-        b2T: 'برك سبانخ', b2D: 'Börek Spinat',
-        b3T: 'برك جبنة', b3D: 'Börek Käse',
-        b4T: 'برك كيري', b4D: 'Börek Kiri',
-
-        k1T: 'كيلو صفيحة', k1D: '1 kg Sfiha',
-        k2T: 'كيلو مجرمشة', k2D: '1 kg Mjarmascha',
-        k3T: 'كيلو شرحات', k3D: '1 kg Schrahat',
-
-        addBtn: 'إضافة للطلب',
-        labelCart: 'السلة:',
-        labelItems: 'عناصر',
-        btnOrder: 'إرسال الطلب (WhatsApp)',
-        btnClear: 'تفريغ'
-      },
-      de: {
-        dir: 'ltr',
-        tabBorek: 'Börek',
-        tabManakish: 'Manakisch & Rollen',
-        tabPizza: 'Pizza',
-        tabSafaih: 'Sfiha & Schrahat',
-        tabKilo: 'Nach Kilo',
-
-        titleBorek: 'Börek Spezialitäten',
-        titleManakish: 'Manakisch & Spezial-Rollen',
-        titlePizza: 'Pizza',
-        titleSafaih: 'Sfiha & Schrahat Fladen',
-        titleKilo: 'Bestellungen Nach Kilo',
-
-        s1T: 'Damaszener Sfiha', s1D: 'Sfiha Einzelstück',
-        m1T: 'Damaszener Käse', m1D: 'Traditioneller Käse',
-        m2T: "Za'atar", m2D: 'Thymian mit Olivenöl',
-        m3T: 'Muhammara', m3D: 'Würzige Paprikapaste',
-        m4T: 'Spinat', m4D: 'Spinat Fladen',
-        m5T: 'Schisch Rolle', m5D: 'Hähnchen Schisch Rolle',
-        m6T: 'Käse', m6D: 'Käse Fladen',
-        m7T: 'Muhammara mit Kaschkaval', m7D: 'Paprikapaste mit Käse',
-        m8T: 'Fleisch Fladen', m8D: 'Hackfleisch Fladen',
-        m9T: 'Südjuk', m9D: 'Knoblauchwurst',
-        m10T: 'Töschka', m10D: 'Töschka Spezialität',
-        m11T: "Käse & Za'atar Mix", m11D: 'Käse mit Thymian',
-        m12T: 'Kaschkaval', m12D: 'Kaschkaval Käse',
-        m13T: 'Mortadella mit Kaschkaval', m13D: 'Mortadella & Käse',
-
-        s2T: 'Sfiha Sanasel', s2D: 'Sfiha Sanasel Fladen',
-        s3T: 'Mjarmascha Fladen', s3D: 'Würziger Fleischfladen',
-        s4T: 'Schrahat Fladen', s4D: 'Fleischscheiben auf Teig',
-
-        p1T: 'Mini Pizza', p1D: 'Mini Pizza',
-        p2T: 'Pizza Klein', p2D: 'Kleine Pizza',
-        p3T: 'Pizza Mittel', p3D: 'Mittlere Pizza',
-        p4T: 'Pizza Groß', p4D: 'Große Pizza',
-        p5T: 'Pizza Familie', p5D: 'Familien Pizza',
-
-        b1T: 'Börek Oliven', b1D: 'Börek mit Oliven',
-        b2T: 'Börek Spinat', b2D: 'Börek mit Spinat',
-        b3T: 'Börek Käse', b3D: 'Börek mit Käse',
-        b4T: 'Börek Kiri', b4D: 'Börek mit Kiri Käse',
-
-        k1T: '1 kg Sfiha', k1D: 'Sfiha pro Kilo',
-        k2T: '1 kg Mjarmascha', k2D: 'Mjarmascha pro Kilo',
-        k3T: '1 kg Schrahat', k3D: 'Schrahat pro Kilo',
-
-        addBtn: 'Hinzufügen',
-        labelCart: 'Warenkorb:',
-        labelItems: 'Artikel',
-        btnOrder: 'Bestellen via WhatsApp',
-        btnClear: 'Leeren'
-      },
-      en: {
-        dir: 'ltr',
-        tabBorek: 'Börek',
-        tabManakish: 'Manakish & Rolls',
-        tabPizza: 'Pizza',
-        tabSafaih: 'Plates & Slices',
-        tabKilo: 'By Kilo',
-
-        titleBorek: 'Börek Pastries',
-        titleManakish: 'Manakish & Special Rolls',
-        titlePizza: 'Pizza',
-        titleSafaih: 'Sfiha & Schrahat Flatbreads',
-        titleKilo: 'By Kilo Orders',
-
-        s1T: 'Damascene Sfiha', s1D: 'Single Sfiha',
-        m1T: 'Damascus Cheese', m1D: 'Traditional Damascus Cheese',
-        m2T: "Za'atar", m2D: 'Thyme with olive oil',
-        m3T: 'Muhammara', m3D: 'Red pepper paste',
-        m4T: 'Spinach', m4D: 'Spinach pastry',
-        m5T: 'Shish Roll', m5D: 'Chicken Shish Roll',
-        m6T: 'Cheese', m6D: 'Cheese pastry',
-        m7T: 'Muhammara with Kaschkaval', m7D: 'Pepper paste with cheese',
-        m8T: 'Meat Flatbread', m8D: 'Minced meat pastry',
-        m9T: 'Sujuk', m9D: 'Garlic sausage wrap',
-        m10T: 'Toshka', m10D: 'Toshka specialty',
-        m11T: "Cheese & Za'atar Mix", m11D: 'Cheese and thyme mix',
-        m12T: 'Kaschkaval', m12D: 'Kaschkaval cheese',
-        m13T: 'Mortadella & Kaschkaval', m13D: 'Mortadella with cheese',
-
-        s2T: 'Sfiha Sanasel', s2D: 'Sfiha Sanasel flatbread',
-        s3T: 'Mjarmascha Flatbread', s3D: 'Mjarmascha flatbread',
-        s4T: 'Schrahat Flatbread', s4D: 'Meat slices flatbread',
-
-        p1T: 'Mini Pizza', p1D: 'Mini Pizza',
-        p2T: 'Small Pizza', p2D: 'Small Size Pizza',
-        p3T: 'Medium Pizza', p3D: 'Medium Size Pizza',
-        p4T: 'Large Pizza', p4D: 'Large Size Pizza',
-        p5T: 'Family Pizza', p5D: 'Family Size Pizza',
-
-        b1T: 'Olive Börek', b1D: 'Börek with olives',
-        b2T: 'Spinach Börek', b2D: 'Börek with spinach',
-        b3T: 'Cheese Börek', b3D: 'Börek with cheese',
-        b4T: 'Kiri Börek', b4D: 'Börek with Kiri cheese',
-
-        k1T: '1 kg Sfiha', k1D: 'Sfiha per kilo',
-        k2T: '1 kg Mjarmascha', k2D: 'Mjarmascha per kilo',
-        k3T: '1 kg Schrahat', k3D: 'Schrahat per kilo',
-
-        addBtn: 'Add to order',
-        labelCart: 'Cart:',
-        labelItems: 'items',
-        btnOrder: 'Send Order (WhatsApp)',
-        btnClear: 'Clear'
-      }
-    };
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      var t = translations[lang];
-
-      document.documentElement.dir = t.dir;
-      document.documentElement.lang = lang;
-
-      var buttons = document.querySelectorAll('.lang-btn');
-      buttons[0].classList.toggle('active', lang === 'ar');
-      buttons[1].classList.toggle('active', lang === 'de');
-      buttons[2].classList.toggle('active', lang === 'en');
-
-      document.getElementById('tab-borek').innerText = t.tabBorek;
-      document.getElementById('tab-manakish').innerText = t.tabManakish;
-      document.getElementById('tab-pizza').innerText = t.tabPizza;
-      document.getElementById('tab-safaih').innerText = t.tabSafaih;
-      document.getElementById('tab-kilo').innerText = t.tabKilo;
-
-      document.getElementById('title-borek').innerText = t.titleBorek;
-      document.getElementById('title-manakish').innerText = t.titleManakish;
-      document.getElementById('title-pizza').innerText = t.titlePizza;
-      document.getElementById('title-safaih').innerText = t.titleSafaih;
-      document.getElementById('title-kilo').innerText = t.titleKilo;
-
-      for (var key in t) {
-        if (key.endsWith('T') || key.endsWith('D')) {
-          var elId = key.replace('T', '-t').replace('D', '-d');
-          var el = document.getElementById(elId);
-          if (el) el.innerText = t[key];
+            renderMenu();
         }
-      }
 
-      var addBtns = document.querySelectorAll('.add-btn');
-      for (var i = 0; i < addBtns.length; i++) {
-        addBtns[i].innerText = t.addBtn;
-      }
+        function renderMenu() {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
 
-      document.getElementById('label-cart').innerText = t.labelCart;
-      document.getElementById('label-items').innerText = t.labelItems;
-      document.getElementById('btn-order').innerText = t.btnOrder;
-      document.getElementById('btn-clear').innerText = t.btnClear;
-    }
+            const categories = ['borek', 'manakish', 'pizza', 'sfiha', 'kilo'];
 
-    function showTab(evt, tabId) {
-      var sections = document.querySelectorAll('.menu-section');
-      for (var i = 0; i < sections.length; i++) {
-        sections[i].classList.remove('active');
-      }
-      
-      var buttons = document.querySelectorAll('.tab-btn');
-      for (var j = 0; j < buttons.length; j++) {
-        buttons[j].classList.remove('active');
-      }
+            categories.forEach(cat => {
+                const items = menuData.filter(item => item.category === cat);
+                if (items.length === 0) return;
 
-      document.getElementById(tabId).classList.add('active');
-      evt.currentTarget.classList.add('active');
-    }
+                const section = document.createElement('section');
+                section.id = `sec-${cat}`;
 
-    function addToCart(elementId, price) {
-      if (!cart[elementId]) {
-        cart[elementId] = { count: 1, price: price };
-      } else {
-        cart[elementId].count += 1;
-      }
-      total += price;
-      updateCartDisplay();
-    }
+                const title = document.createElement('h2');
+                title.className = 'section-title';
+                title.innerText = i18n[currentLang].categories[cat];
+                section.appendChild(title);
 
-    function clearCart() {
-      cart = {};
-      total = 0;
-      updateCartDisplay();
-    }
+                const grid = document.createElement('div');
+                grid.className = 'menu-grid';
 
-    function updateCartDisplay() {
-      var totalItems = 0;
-      for (var key in cart) {
-        totalItems += cart[key].count;
-      }
-      document.getElementById('cart-count').innerText = totalItems;
-      document.getElementById('cart-total').innerText = total.toFixed(2) + ' €';
-    }
+                items.forEach(item => {
+                    const qty = cart[item.id] || 0;
+                    const card = document.createElement('div');
+                    card.className = 'menu-card';
 
-    function sendWhatsApp() {
-      var keys = Object.keys(cart);
-      if (keys.length === 0) {
-        alert(currentLang === 'ar' ? 'السلة فارغة!' : (currentLang === 'de' ? 'Der Warenkorb ist leer!' : 'Cart is empty!'));
-        return;
-      }
+                    const imgContent = item.image 
+                        ? `<img src="${item.image}" alt="${item.name[currentLang]}" class="card-img">`
+                        : `<i class="fa-solid fa-utensils placeholder-img"></i>`;
 
-      var text = (currentLang === 'ar' ? 'مرحباً الفرن الشامي، أرغب بطلب:\n\n' : (currentLang === 'de' ? 'Hallo Al-Shami Ofen, ich möchte bestellen:\n\n' : 'Hello Al-Shami Ofen, I would like to order:\n\n'));
-      
-      for (var i = 0; i < keys.length; i++) {
-        var itemKey = keys[i];
-        var name = translations[currentLang][itemKey.replace('-t', 'T')] || document.getElementById(itemKey).innerText;
-        var itemTotal = (cart[itemKey].price * cart[itemKey].count).toFixed(2);
-        text += "• " + cart[itemKey].count + "x " + name + " (" + itemTotal + "€)\n";
-      }
+                    card.innerHTML = `
+                        <div class="card-img-wrapper">
+                            ${imgContent}
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <div class="item-title">${item.name[currentLang]}</div>
+                                <div class="item-price">€${item.price.toFixed(2)}</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-btn" style="display: ${qty > 0 ? 'none' : 'flex'}" onclick="updateQty('${item.id}', 1)">
+                                    <i class="fa-solid fa-plus"></i> ${i18n[currentLang].add}
+                                </button>
+                                <div class="qty-controls ${qty > 0 ? 'active' : ''}">
+                                    <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
+                                    <span class="qty-num">${qty}</span>
+                                    <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
 
-      text += "\n" + (currentLang === 'ar' ? 'المجموع الكلي: ' : (currentLang === 'de' ? 'Gesamtsumme: ' : 'Total Amount: ')) + total.toFixed(2) + " €";
-      
-      var encodedText = encodeURIComponent(text);
-      var waUrl = restaurantPhone ? "https://wa.me/" + restaurantPhone + "?text=" + encodedText : "https://wa.me/?text=" + encodedText;
-      window.open(waUrl, "_blank");
-    }
-  </script>
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+
+        function updateQty(id, change) {
+            cart[id] = (cart[id] || 0) + change;
+            if (cart[id] <= 0) delete cart[id];
+            
+            renderMenu();
+            updateCartBar();
+        }
+
+        function updateCartBar() {
+            let count = 0;
+            let total = 0;
+
+            Object.keys(cart).forEach(id => {
+                const item = menuData.find(i => i.id === id);
+                count += cart[id];
+                total += item.price * cart[id];
+            });
+
+            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-total').innerText = `€${total.toFixed(2)}`;
+        }
+
+        function scrollToSection(cat) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const target = document.getElementById(`sec-${cat}`);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function sendOrder() {
+            if (Object.keys(cart).length === 0) return;
+
+            let msg = "مرحباً، أرغب بطلب ما يلي من الفرن الشامي:\n\n";
+            let total = 0;
+
+            Object.keys(cart).forEach(id => {
+                const item = menuData.find(i => i.id === id);
+                const itemTotal = item.price * cart[id];
+                total += itemTotal;
+                msg += `- ${item.name.ar} × ${cart[id]} (€${itemTotal.toFixed(2)})\n`;
+            });
+
+            msg += `\nالمجموع الكلي: €${total.toFixed(2)}`;
+
+            const phone = "+49123456789"; // Replace with your actual WhatsApp phone number
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        // Initial Render
+        renderMenu();
+    </script>
 </body>
 </html>
