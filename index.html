@@ -40,7 +40,6 @@
             padding-bottom: 90px;
         }
 
-        /* Header & Banner */
         header {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
@@ -62,7 +61,6 @@
             color: #94a3b8;
         }
 
-        /* Controls: Language Selector */
         .lang-switch {
             display: flex;
             justify-content: center;
@@ -87,7 +85,6 @@
             border-color: var(--primary-color);
         }
 
-        /* Nav Tabs */
         .nav-scroller {
             position: sticky;
             top: 0;
@@ -127,7 +124,6 @@
             color: white;
         }
 
-        /* Main Container & Sections */
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -147,7 +143,6 @@
             width: max-content;
         }
 
-        /* Menu Grid */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -214,7 +209,6 @@
             margin-bottom: 12px;
         }
 
-        /* Add to Cart Actions */
         .card-actions {
             display: flex;
             align-items: center;
@@ -274,7 +268,6 @@
             font-size: 0.95rem;
         }
 
-        /* Floating Cart Bar */
         .cart-bar {
             position: fixed;
             bottom: 16px;
@@ -336,7 +329,6 @@
             transform: scale(1.03);
         }
 
-        /* Responsive Layout Adjustments */
         @media (max-width: 480px) {
             .menu-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -382,9 +374,7 @@
         </div>
     </div>
 
-    <div class="container" id="menu-container">
-        <!-- Content dynamically generated -->
-    </div>
+    <div class="container" id="menu-container"></div>
 
     <div class="cart-bar">
         <div class="cart-info">
@@ -398,7 +388,6 @@
     </div>
 
     <script>
-        // Dictionary for Multilingual Support
         const i18n = {
             ar: {
                 categories: {
@@ -459,41 +448,40 @@
             }
         };
 
-        // Menu Data Architecture
         const menuData = [
             // Borek
-            { id: "b1", category: "borek", price: 1.50, name: { ar: "بورك جبنة", de: "Burek Käse", en: "Cheese Borek" }, image: "" },
-            { id: "b2", category: "borek", price: 1.50, name: { ar: "بورك بطاطا", de: "Burek Kartoffeln", en: "Potato Borek" }, image: "" },
+            { id: "b1", category: "borek", price: 1.50, name: { ar: "بورك جبنة", de: "Burek Käse", en: "Cheese Borek" }, image: "borek_cheese.jpg" },
+            { id: "b2", category: "borek", price: 1.50, name: { ar: "بورك بطاطا", de: "Burek Kartoffeln", en: "Potato Borek" }, image: "borek_potato.jpg" },
 
             // Manakish & Rolls
-            { id: "m1", category: "manakish", price: 1.50, name: { ar: "جبنة شامية", de: "Schami Käse", en: "Shami Cheese" }, image: "image_2.png" },
-            { id: "m2", category: "manakish", price: 3.00, name: { ar: "قشقوان", de: "Kashkaval", en: "Kashkaval" }, image: "image_3.png" },
-            { id: "m3", category: "manakish", price: 2.50, name: { ar: "جبنة", de: "Käse", en: "Cheese" }, image: "image_4.png" },
-            { id: "m4", category: "manakish", price: 3.00, name: { ar: "لحمة", de: "Fleisch", en: "Meat" }, image: "image_5.png" },
-            { id: "m5", category: "manakish", price: 3.00, name: { ar: "سبانخ", de: "Spinat", en: "Spinach" }, image: "image_6.png" },
-            { id: "m6", category: "manakish", price: 3.00, name: { ar: "محمرة بالقشقوان", de: "Muhammara mit Kashkaval", en: "Muhammara with Kashkaval" }, image: "image_7.png" },
-            { id: "m7", category: "manakish", price: 3.00, name: { ar: "ميني بيتزا", de: "Mini Pizza", en: "Mini Pizza" }, image: "image_8.png" },
-            { id: "m8", category: "manakish", price: 3.00, name: { ar: "زعتر", de: "Zaatar", en: "Zaatar" }, image: "image_9.png" },
-            { id: "m9", category: "manakish", price: 2.00, name: { ar: "محمرة", de: "Muhammara", en: "Muhammara" }, image: "image_10.png" },
-            { id: "m10", category: "manakish", price: 3.00, name: { ar: "ميكس (زعتر وجبنة)", de: "Mix (Zaatar & Käse)", en: "Mix (Zaatar & Cheese)" }, image: "image_11.png" },
-            { id: "m11", category: "manakish", price: 5.00, name: { ar: "سناسل", de: "Sanasel", en: "Sanasel" }, image: "image_12.png" },
-            { id: "m12", category: "manakish", price: 5.00, name: { ar: "مجرمشة", de: "Mujarmasha", en: "Mujarmasha" }, image: "image_13.png" },
+            { id: "m1", category: "manakish", price: 1.50, name: { ar: "جبنة شامية", de: "Schami Käse", en: "Shami Cheese" }, image: "jubna_shamiya.jpg" },
+            { id: "m2", category: "manakish", price: 3.00, name: { ar: "قشقوان", de: "Kashkaval", en: "Kashkaval" }, image: "qashqawan.jpg" },
+            { id: "m3", category: "manakish", price: 2.50, name: { ar: "جبنة", de: "Käse", en: "Cheese" }, image: "jubna.jpg" },
+            { id: "m4", category: "manakish", price: 3.00, name: { ar: "لحمة", de: "Fleisch", en: "Meat" }, image: "lahma.jpg" },
+            { id: "m5", category: "manakish", price: 3.00, name: { ar: "سبانخ", de: "Spinat", en: "Spinach" }, image: "sabanekh.jpg" },
+            { id: "m6", category: "manakish", price: 3.00, name: { ar: "محمرة بالقشقوان", de: "Muhammara mit Kashkaval", en: "Muhammara with Kashkaval" }, image: "muhammara_qashqawan.jpg" },
+            { id: "m7", category: "manakish", price: 3.00, name: { ar: "ميني بيتزا", de: "Mini Pizza", en: "Mini Pizza" }, image: "mini_pizza.jpg" },
+            { id: "m8", category: "manakish", price: 3.00, name: { ar: "زعتر", de: "Zaatar", en: "Zaatar" }, image: "zaatar.jpg" },
+            { id: "m9", category: "manakish", price: 2.00, name: { ar: "محمرة", de: "Muhammara", en: "Muhammara" }, image: "muhammara.jpg" },
+            { id: "m10", category: "manakish", price: 3.00, name: { ar: "ميكس (زعتر وجبنة)", de: "Mix (Zaatar & Käse)", en: "Mix (Zaatar & Cheese)" }, image: "mix.jpg" },
+            { id: "m11", category: "manakish", price: 5.00, name: { ar: "سناسل", de: "Sanasel", en: "Sanasel" }, image: "sanasel.jpg" },
+            { id: "m12", category: "manakish", price: 5.00, name: { ar: "مجرمشة", de: "Mujarmasha", en: "Mujarmasha" }, image: "mujarmasha.jpg" },
 
             // Pizza
-            { id: "p1", category: "pizza", price: 6.00, name: { ar: "بيتزا مارغريتا", de: "Pizza Margherita", en: "Pizza Margherita" }, image: "" },
-            { id: "p2", category: "pizza", price: 7.00, name: { ar: "بيتزا خضار", de: "Pizza Gemüse", en: "Vegetable Pizza" }, image: "" },
-            { id: "p3", category: "pizza", price: 8.00, name: { ar: "بيتزا شامية (سجق / مرتديلا / لحم)", de: "Schami Pizza (Sujuk/Salami/Fleisch)", en: "Shami Pizza (Sujuk/Mortadella/Meat)" }, image: "" },
+            { id: "p1", category: "pizza", price: 6.00, name: { ar: "بيتزا مارغريتا", de: "Pizza Margherita", en: "Pizza Margherita" }, image: "pizza_margherita.jpg" },
+            { id: "p2", category: "pizza", price: 7.00, name: { ar: "بيتزا خضار", de: "Pizza Gemüse", en: "Vegetable Pizza" }, image: "pizza_veggie.jpg" },
+            { id: "p3", category: "pizza", price: 8.00, name: { ar: "بيتزا شامية (سجق / مرتديلا / لحم)", de: "Schami Pizza (Sujuk/Salami/Fleisch)", en: "Shami Pizza (Sujuk/Mortadella/Meat)" }, image: "pizza_shami.jpg" },
 
             // Sfiha & Slices
-            { id: "s1", category: "sfiha", price: 1.50, name: { ar: "صفيحة شامية", de: "Schami Sfiha", en: "Shami Sfiha" }, image: "image_14.png" },
-            { id: "s2", category: "sfiha", price: 1.50, name: { ar: "قرص جبنة", de: "Käse Stück", en: "Cheese Slice" }, image: "" },
-            { id: "s3", category: "sfiha", price: 1.50, name: { ar: "قرص سبانخ", de: "Spinat Stück", en: "Spinach Slice" }, image: "" },
-            { id: "s4", category: "sfiha", price: 1.50, name: { ar: "قرص محمرة", de: "Muhammara Stück", en: "Muhammara Slice" }, image: "" },
-            { id: "s5", category: "sfiha", price: 5.00, name: { ar: "صفيحة سناسل", de: "Sfiha Sanasel", en: "Sfiha Sanasel" }, image: "" },
+            { id: "s1", category: "sfiha", price: 1.50, name: { ar: "صفيحة شامية", de: "Schami Sfiha", en: "Shami Sfiha" }, image: "sfiha_shamiya.jpg" },
+            { id: "s2", category: "sfiha", price: 1.50, name: { ar: "قرص جبنة", de: "Käse Stück", en: "Cheese Slice" }, image: "qurs_cheese.jpg" },
+            { id: "s3", category: "sfiha", price: 1.50, name: { ar: "قرص سبانخ", de: "Spinat Stück", en: "Spinach Slice" }, image: "qurs_spinach.jpg" },
+            { id: "s4", category: "sfiha", price: 1.50, name: { ar: "قرص محمرة", de: "Muhammara Stück", en: "Muhammara Slice" }, image: "qurs_muhammara.jpg" },
+            { id: "s5", category: "sfiha", price: 5.00, name: { ar: "صفيحة سناسل", de: "Sfiha Sanasel", en: "Sfiha Sanasel" }, image: "sfiha_sanasel.jpg" },
 
             // Kilo Orders
-            { id: "k1", category: "kilo", price: 25.00, name: { ar: "كيلو صفيحة شامية", de: "1 Kilo Schami Sfiha", en: "1 Kilo Shami Sfiha" }, image: "" },
-            { id: "k2", category: "kilo", price: 25.00, name: { ar: "كيلو معجنات مشكلة", de: "1 Kilo Gemischtes Gebäck", en: "1 Kilo Mixed Pastries" }, image: "" }
+            { id: "k1", category: "kilo", price: 25.00, name: { ar: "كيلو صفيحة شامية", de: "1 Kilo Schami Sfiha", en: "1 Kilo Shami Sfiha" }, image: "kilo_sfiha.jpg" },
+            { id: "k2", category: "kilo", price: 25.00, name: { ar: "كيلو معجنات مشكلة", de: "1 Kilo Gemischtes Gebäck", en: "1 Kilo Mixed Pastries" }, image: "kilo_mixed.jpg" }
         ];
 
         let currentLang = 'ar';
@@ -505,9 +493,8 @@
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event && event.target) event.target.classList.add('active');
 
-            // Update Tab texts
             document.getElementById('tab-borek').innerText = i18n[lang].tabs.borek;
             document.getElementById('tab-manakish').innerText = i18n[lang].tabs.manakish;
             document.getElementById('tab-pizza').innerText = i18n[lang].tabs.pizza;
@@ -516,6 +503,18 @@
             document.getElementById('order-btn-text').innerText = i18n[lang].order;
 
             renderMenu();
+        }
+
+        function handleImgError(imgElement, imageName) {
+            const currentSrc = imgElement.src;
+            if (currentSrc.endsWith('.jpg')) {
+                imgElement.src = `images/${imageName.replace('.jpg', '.png')}`;
+            } else if (currentSrc.endsWith('.png')) {
+                imgElement.src = `images/${imageName.replace('.jpg', '.jpeg')}`;
+            } else {
+                imgElement.onerror = null;
+                imgElement.parentNode.innerHTML = '<i class="fa-solid fa-utensils placeholder-img"></i>';
+            }
         }
 
         function renderMenu() {
@@ -544,9 +543,7 @@
                     const card = document.createElement('div');
                     card.className = 'menu-card';
 
-                    const imgContent = item.image 
-                        ? `<img src="${item.image}" alt="${item.name[currentLang]}" class="card-img">`
-                        : `<i class="fa-solid fa-utensils placeholder-img"></i>`;
+                    const imgContent = `<img src="images/${item.image}" alt="${item.name[currentLang]}" class="card-img" onerror="handleImgError(this, '${item.image}')">`;
 
                     card.innerHTML = `
                         <div class="card-img-wrapper">
@@ -601,7 +598,7 @@
 
         function scrollToSection(cat) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event && event.target) event.target.classList.add('active');
 
             const target = document.getElementById(`sec-${cat}`);
             if (target) {
@@ -624,12 +621,11 @@
 
             msg += `\nالمجموع الكلي: €${total.toFixed(2)}`;
 
-            const phone = "+49123456789"; // Replace with your actual WhatsApp phone number
+            const phone = "+49123456789"; 
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         }
 
-        // Initial Render
         renderMenu();
     </script>
 </body>
